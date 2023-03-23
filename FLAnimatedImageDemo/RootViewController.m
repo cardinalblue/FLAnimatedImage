@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import "DebugView.h"
+#import <FLAnimatedImage/FLAnimatedImage+GIF.h>
 
 
 @interface RootViewController ()
@@ -241,7 +242,8 @@
     NSString *const diskPath = [NSHomeDirectory() stringByAppendingPathComponent:filename];
     
     NSData * __block animatedImageData = [[NSFileManager defaultManager] contentsAtPath:diskPath];
-    FLAnimatedImage * __block animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
+//    FLAnimatedImage * __block animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
+    FLAnimatedImage * __block animatedImage = [FLAnimatedImage animatedImageWithGIFData:animatedImageData];
     
     if (animatedImage) {
         if (completion) {
@@ -250,7 +252,8 @@
     } else {
         [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             animatedImageData = data;
-            animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
+//            animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
+            animatedImage = [FLAnimatedImage animatedImageWithGIFData:animatedImageData];
             if (animatedImage) {
                 if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{

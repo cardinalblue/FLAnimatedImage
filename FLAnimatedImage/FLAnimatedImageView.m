@@ -9,6 +9,7 @@
 
 #import "FLAnimatedImageView.h"
 #import "FLAnimatedImage.h"
+#import "FLWeakProxy.h"
 #import <QuartzCore/QuartzCore.h>
 
 

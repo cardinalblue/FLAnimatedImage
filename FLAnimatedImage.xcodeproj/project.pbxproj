@@ -8,17 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		0C22DAED1BCABF4F006E1D3B /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C22DAE81BCABF4F006E1D3B /* FLAnimatedImage.m */; };
-		0C22DAEF1BCABF4F006E1D3B /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C22DAEA1BCABF4F006E1D3B /* FLAnimatedImageView.m */; };
-		84C35646241D1B2D00052A01 /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 84AB1DD9241D0A4F0039C1C7 /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84C35647241D1B2D00052A01 /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 84AB1DDA241D0A4F0039C1C7 /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B3129CC539300756BDE /* FLAnimatedImageFrameCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30832B2B29CC539300756BDE /* FLAnimatedImageFrameCache.m */; };
+		30832B3229CC539300756BDE /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30832B2C29CC539300756BDE /* FLAnimatedImageView.m */; };
+		30832B3429CC539300756BDE /* FLAnimatedImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 30832B2E29CC539300756BDE /* FLAnimatedImage+GIF.m */; };
+		30832B3529CC539300756BDE /* FLAnimatedImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 30832B2F29CC539300756BDE /* FLAnimatedImageData.m */; };
+		30832B3629CC539300756BDE /* FLWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 30832B3029CC539300756BDE /* FLWeakProxy.m */; };
+		30832B3F29CC53A100756BDE /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3729CC53A000756BDE /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B4029CC53A100756BDE /* FLAnimatedImage+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3829CC53A000756BDE /* FLAnimatedImage+Internal.h */; };
+		30832B4129CC53A100756BDE /* FLAnimatedImageData.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3929CC53A000756BDE /* FLAnimatedImageData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B4229CC53A100756BDE /* FLAnimatedImageFrameDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3A29CC53A000756BDE /* FLAnimatedImageFrameDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B4329CC53A100756BDE /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3B29CC53A000756BDE /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B4429CC53A100756BDE /* FLAnimatedImageFrameCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3C29CC53A000756BDE /* FLAnimatedImageFrameCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B4529CC53A100756BDE /* FLAnimatedImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3D29CC53A000756BDE /* FLAnimatedImage+GIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30832B4629CC53A100756BDE /* FLWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 30832B3E29CC53A000756BDE /* FLWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30EF775429CC6259004EE643 /* FLAnimatedGIFDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EF775229CC6259004EE643 /* FLAnimatedGIFDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30EF775529CC6259004EE643 /* FLAnimatedGIFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EF775329CC6259004EE643 /* FLAnimatedGIFDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C22DAE81BCABF4F006E1D3B /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
 		0C22DAEA1BCABF4F006E1D3B /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
 		0C22DAEB1BCABF4F006E1D3B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84AB1DD9241D0A4F0039C1C7 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImage.h; path = include/FLAnimatedImage.h; sourceTree = "<group>"; };
-		84AB1DDA241D0A4F0039C1C7 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageView.h; path = include/FLAnimatedImageView.h; sourceTree = "<group>"; };
+		30832B2B29CC539300756BDE /* FLAnimatedImageFrameCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageFrameCache.m; sourceTree = "<group>"; };
+		30832B2C29CC539300756BDE /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
+		30832B2E29CC539300756BDE /* FLAnimatedImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage+GIF.m"; sourceTree = "<group>"; };
+		30832B2F29CC539300756BDE /* FLAnimatedImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageData.m; sourceTree = "<group>"; };
+		30832B3029CC539300756BDE /* FLWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLWeakProxy.m; sourceTree = "<group>"; };
+		30832B3729CC53A000756BDE /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageView.h; path = include/FLAnimatedImageView.h; sourceTree = "<group>"; };
+		30832B3829CC53A000756BDE /* FLAnimatedImage+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FLAnimatedImage+Internal.h"; path = "include/FLAnimatedImage+Internal.h"; sourceTree = "<group>"; };
+		30832B3929CC53A000756BDE /* FLAnimatedImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageData.h; path = include/FLAnimatedImageData.h; sourceTree = "<group>"; };
+		30832B3A29CC53A000756BDE /* FLAnimatedImageFrameDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageFrameDataSource.h; path = include/FLAnimatedImageFrameDataSource.h; sourceTree = "<group>"; };
+		30832B3B29CC53A000756BDE /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImage.h; path = include/FLAnimatedImage.h; sourceTree = "<group>"; };
+		30832B3C29CC53A000756BDE /* FLAnimatedImageFrameCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageFrameCache.h; path = include/FLAnimatedImageFrameCache.h; sourceTree = "<group>"; };
+		30832B3D29CC53A000756BDE /* FLAnimatedImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FLAnimatedImage+GIF.h"; path = "include/FLAnimatedImage+GIF.h"; sourceTree = "<group>"; };
+		30832B3E29CC53A000756BDE /* FLWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLWeakProxy.h; path = include/FLWeakProxy.h; sourceTree = "<group>"; };
+		30EF775229CC6259004EE643 /* FLAnimatedGIFDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedGIFDataSource.h; sourceTree = "<group>"; };
+		30EF775329CC6259004EE643 /* FLAnimatedGIFDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedGIFDataSource.m; sourceTree = "<group>"; };
 		92C9BC0C1B199DC500D79B06 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,13 +61,33 @@
 		0C22DAE61BCABF4F006E1D3B /* FLAnimatedImage */ = {
 			isa = PBXGroup;
 			children = (
-				84AB1DD9241D0A4F0039C1C7 /* FLAnimatedImage.h */,
-				84AB1DDA241D0A4F0039C1C7 /* FLAnimatedImageView.h */,
+				30832B3B29CC53A000756BDE /* FLAnimatedImage.h */,
 				0C22DAE81BCABF4F006E1D3B /* FLAnimatedImage.m */,
-				0C22DAEA1BCABF4F006E1D3B /* FLAnimatedImageView.m */,
+				30832B3D29CC53A000756BDE /* FLAnimatedImage+GIF.h */,
+				30832B2E29CC539300756BDE /* FLAnimatedImage+GIF.m */,
+				30832B3829CC53A000756BDE /* FLAnimatedImage+Internal.h */,
+				30832B3929CC53A000756BDE /* FLAnimatedImageData.h */,
+				30832B2F29CC539300756BDE /* FLAnimatedImageData.m */,
+				30832B3C29CC53A000756BDE /* FLAnimatedImageFrameCache.h */,
+				30832B2B29CC539300756BDE /* FLAnimatedImageFrameCache.m */,
+				30832B3A29CC53A000756BDE /* FLAnimatedImageFrameDataSource.h */,
+				30832B3729CC53A000756BDE /* FLAnimatedImageView.h */,
+				30832B2C29CC539300756BDE /* FLAnimatedImageView.m */,
+				30832B3E29CC53A000756BDE /* FLWeakProxy.h */,
+				30832B3029CC539300756BDE /* FLWeakProxy.m */,
+				30EF775229CC6259004EE643 /* FLAnimatedGIFDataSource.h */,
+				30EF775329CC6259004EE643 /* FLAnimatedGIFDataSource.m */,
 				0C22DAEB1BCABF4F006E1D3B /* Info.plist */,
 			);
 			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		30EF775029CC53E7004EE643 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0C22DAEA1BCABF4F006E1D3B /* FLAnimatedImageView.m */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		92C9BC021B199DC500D79B06 = {
@@ -50,6 +95,7 @@
 			children = (
 				0C22DAE61BCABF4F006E1D3B /* FLAnimatedImage */,
 				92C9BC0D1B199DC500D79B06 /* Products */,
+				30EF775029CC53E7004EE643 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,8 +114,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C35646241D1B2D00052A01 /* FLAnimatedImage.h in Headers */,
-				84C35647241D1B2D00052A01 /* FLAnimatedImageView.h in Headers */,
+				30832B4429CC53A100756BDE /* FLAnimatedImageFrameCache.h in Headers */,
+				30832B3F29CC53A100756BDE /* FLAnimatedImageView.h in Headers */,
+				30832B4229CC53A100756BDE /* FLAnimatedImageFrameDataSource.h in Headers */,
+				30832B4129CC53A100756BDE /* FLAnimatedImageData.h in Headers */,
+				30832B4529CC53A100756BDE /* FLAnimatedImage+GIF.h in Headers */,
+				30EF775429CC6259004EE643 /* FLAnimatedGIFDataSource.h in Headers */,
+				30832B4629CC53A100756BDE /* FLWeakProxy.h in Headers */,
+				30832B4029CC53A100756BDE /* FLAnimatedImage+Internal.h in Headers */,
+				30832B4329CC53A100756BDE /* FLAnimatedImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30832B3129CC539300756BDE /* FLAnimatedImageFrameCache.m in Sources */,
+				30EF775529CC6259004EE643 /* FLAnimatedGIFDataSource.m in Sources */,
 				0C22DAED1BCABF4F006E1D3B /* FLAnimatedImage.m in Sources */,
-				0C22DAEF1BCABF4F006E1D3B /* FLAnimatedImageView.m in Sources */,
+				30832B3429CC539300756BDE /* FLAnimatedImage+GIF.m in Sources */,
+				30832B3629CC539300756BDE /* FLWeakProxy.m in Sources */,
+				30832B3529CC539300756BDE /* FLAnimatedImageData.m in Sources */,
+				30832B3229CC539300756BDE /* FLAnimatedImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
