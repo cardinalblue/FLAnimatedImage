@@ -33,6 +33,7 @@
     // Early return if not GIF!
     CFStringRef imageSourceContainerType = CGImageSourceGetType(imageSource);
     BOOL isGIFData = UTTypeConformsTo(imageSourceContainerType, kUTTypeGIF);
+
     if (!isGIFData) {
         FLLogError(@"Supplied data is of type %@ and doesn't seem to be GIF data %@", imageSourceContainerType, data);
         return nil;

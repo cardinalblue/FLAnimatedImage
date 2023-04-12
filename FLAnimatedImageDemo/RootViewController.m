@@ -11,6 +11,7 @@
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import "DebugView.h"
 #import <FLAnimatedImage/FLAnimatedImage+GIF.h>
+#import <FLAnimatedImage/FLAnimatedImage+WebP.h>
 
 
 @interface RootViewController ()
@@ -91,7 +92,8 @@
     [self.view addSubview:self.imageView2];
     self.imageView2.frame = CGRectMake(0.0, 577.0, 379.0, 447.0);
     
-    NSURL *url2 = [NSURL URLWithString:@"https://cloud.githubusercontent.com/assets/1567433/10417835/1c97e436-7052-11e5-8fb5-69373072a5a0.gif"];
+//    NSURL *url2 = [NSURL URLWithString:@"https://cloud.githubusercontent.com/assets/1567433/10417835/1c97e436-7052-11e5-8fb5-69373072a5a0.gif"];
+    NSURL *url2 = [NSURL URLWithString:@"https://picola-asset.piccollage.com/expires_in_days/7/imageassets/public_e0d4d366d4d2256ab6671c4bfb676cc9/800x800.webp"];
     [self loadAnimatedImageWithURL:url2 completion:^(FLAnimatedImage *animatedImage) {
         self.imageView2.animatedImage = animatedImage;
 
@@ -114,19 +116,19 @@
     [self.view addSubview:self.imageView3];
     self.imageView3.frame = CGRectMake(389.0, 577.0, 379.0, 447.0);
     
-    NSURL *url3 = [NSURL URLWithString:@"https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif"];
-    [self loadAnimatedImageWithURL:url3 completion:^(FLAnimatedImage *animatedImage) {
-        self.imageView3.animatedImage = animatedImage;
-
-        // Set up debug UI for image 3
-#if defined(DEBUG) && DEBUG
-        self.imageView3.debug_delegate = self.debugView3;
-        animatedImage.debug_delegate = self.debugView3;
-#endif
-        self.debugView3.imageView = self.imageView3;
-        self.debugView3.image = animatedImage;
-        self.imageView3.userInteractionEnabled = YES;
-    }];
+//    NSURL *url3 = [NSURL URLWithString:@"https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif"];
+//    [self loadAnimatedImageWithURL:url3 completion:^(FLAnimatedImage *animatedImage) {
+//        self.imageView3.animatedImage = animatedImage;
+//
+//        // Set up debug UI for image 3
+//#if defined(DEBUG) && DEBUG
+//        self.imageView3.debug_delegate = self.debugView3;
+//        animatedImage.debug_delegate = self.debugView3;
+//#endif
+//        self.debugView3.imageView = self.imageView3;
+//        self.debugView3.image = animatedImage;
+//        self.imageView3.userInteractionEnabled = YES;
+//    }];
     
     // ... that's it!
     
@@ -253,7 +255,9 @@
         [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             animatedImageData = data;
 //            animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
-            animatedImage = [FLAnimatedImage animatedImageWithGIFData:animatedImageData];
+//            animatedImage = [FLAnimatedImage animatedImageWithGIFData:animatedImageData];
+            animatedImage = [FLAnimatedImage animatedImageWithWebPData:animatedImageData];
+            
             if (animatedImage) {
                 if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{
