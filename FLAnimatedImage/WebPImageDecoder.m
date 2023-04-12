@@ -9,7 +9,6 @@
 #import "WebPImageDecoder.h"
 #import "UIImage+Extension.h"
 
-
 @implementation ImageFrame
 
 - (instancetype)initWithImage:(UIImage *)image duration:(NSTimeInterval)duration {

@@ -6,10 +6,17 @@
 //  Copyright (c) 2015 Facebook. All rights reserved.
 //
 
-#import "FLAnimatedImage.h"
+#import <FLAnimatedImage/FLAnimatedImage.h>
+
+typedef NS_ENUM(NSInteger, WebPDecodeType) {
+    WebPDecodeBuiltIn,
+    WebPDecodeLib
+};
 
 @interface FLAnimatedImage (WebP)
 
-+ (FLAnimatedImage *)animatedImageWithWebPData:(NSData *)data;
+
++ (FLAnimatedImage *)animatedImageWithWebPData:(NSData *)data decodeType:(WebPDecodeType)type;
+//+ (FLAnimatedImage *)builtInAnimatedImageWithWebPData:(NSData *)data;
 
 @end

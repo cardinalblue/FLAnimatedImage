@@ -16,6 +16,8 @@
 #endif
 
 #import "FLAnimatedImageData.h"
+//#import "FLAnimatedImageView.h"
+//#import <FLAnimatedImage/FLAnimatedImageView.h>
 #import "FLAnimatedImage+Internal.h"
 #import "FLAnimatedImageFrameCache.h"
 
@@ -47,12 +49,12 @@ typedef NS_ENUM(NSUInteger, FLAnimatedImageFrameCacheSize) {
     FLAnimatedImageFrameCacheSizeDefault = 5                 // Build up a comfy buffer window to cope with CPU hiccups etc.
 };
 
-
+@protocol FLAnimatedImageViewDebugDelegate;
 
 
 
 //#if defined(DEBUG) && DEBUG
-@interface FLAnimatedImage () <FLAnimatedImageDebugDelegate>
+@interface FLAnimatedImage () //<FLAnimatedImageViewDebugDelegate>
 
 @property (nonatomic, assign, readonly) NSUInteger frameCacheSizeOptimal; // The optimal number of frames to cache based on image size & number of frames; never changes
 @property (nonatomic, assign, readonly, getter=isPredrawingEnabled) BOOL predrawingEnabled; // Enables predrawing of images to improve performance.

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIImage (Extension)
 
 + (UIImage * _Nullable)animatedImageWithFrames:(NSArray<ImageFrame *> *)imageFrames;
++ (UIImage *)predrawnImageFromImage:(UIImage *)imageToPredraw;
 
 @end
 

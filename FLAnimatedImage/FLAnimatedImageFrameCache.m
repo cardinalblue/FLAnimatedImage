@@ -11,6 +11,7 @@
 #import <pthread.h>
 
 #import "FLWeakProxy.h"
+#import "UIImage+Extension.h"
 #import "FLAnimatedImage.h"
 #import "FLAnimatedImageFrameDataSource.h"
 
@@ -401,6 +402,8 @@ static NSHashTable *allAnimatedImagesWeak;
         return image;
     }
 
+
+
     // Hopefully we won't hit the code path often, as it will be expensive if for frame N
     // we need to render frames [0-(N-1)]. It is possible we'll hit this for particularly large
     // images, or after a memory warning.
@@ -408,7 +411,12 @@ static NSHashTable *allAnimatedImagesWeak;
     // running into this code path.
     image = [self.dataSource imageAtIndex:index];
     if ([self.dataSource frameRequiresBlendingWithPreviousFrame:index]) {
-        UIImage *previousImage = [self synchronousImageAtIndex:index - 1];
+//        UIImage *previousImage = [self synchronousImageAtIndex:index - 1]; // NOTE: 加上外面的迴圈 這樣不就變成 n x n ??
+        UIImage *previousImage;
+        if (index != 0) {
+//            previousImage = _cachedFramesForIndexes[@(index-1)];
+            previousImage = [self.dataSource imageAtIndex:index - 1];
+        }
         image = [self.dataSource blendImage:image atIndex:index withPreviousImage:previousImage];
     }
     return image;
