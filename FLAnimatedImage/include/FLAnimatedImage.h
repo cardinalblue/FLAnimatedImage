@@ -69,17 +69,6 @@ extern const NSTimeInterval kFLAnimatedImageDelayTimeIntervalMinimum;
 @property (nonatomic, strong) NSMutableDictionary *debug_info; // To track arbitrary data (e.g. original URL, loading durations, cache hits, etc.)
 #endif
 
-// Pass either a `UIImage` or an `FLAnimatedImage` and get back its size
-//+ (CGSize)sizeForImage:(id)image;
-
-// On success, the initializers return an `FLAnimatedImage` with all fields initialized, on failure they return `nil` and an error will be logged.
-//- (instancetype)initWithAnimatedGIFData:(NSData *)data;
-//// Pass 0 for optimalFrameCacheSize to get the default, predrawing is enabled by default.
-//- (instancetype)initWithAnimatedGIFData:(NSData *)data optimalFrameCacheSize:(NSUInteger)optimalFrameCacheSize predrawingEnabled:(BOOL)isPredrawingEnabled NS_DESIGNATED_INITIALIZER;
-
-
-//@property (nonatomic, strong, readonly) NSData *data; // The data the receiver was initialized with; read-only
-
 @end
 
 typedef NS_ENUM(NSUInteger, FLLogLevel) {
@@ -91,26 +80,12 @@ typedef NS_ENUM(NSUInteger, FLLogLevel) {
     FLLogLevelVerbose
 };
 
-//#if defined(DEBUG) && DEBUG
-//@protocol FLAnimatedImageDebugDelegate <NSObject>
-//
-//@optional
-//
-//- (void)debug_animatedImage:(FLAnimatedImage *)animatedImage didUpdateCachedFrames:(NSIndexSet *)indexesOfFramesInCache;
-//- (void)debug_animatedImage:(FLAnimatedImage *)animatedImage didRequestCachedFrame:(NSUInteger)index;
-//- (CGFloat)debug_animatedImagePredrawingSlowdownFactor:(FLAnimatedImage *)animatedImage;
-//
-//@end
-//#endif
-
 @interface FLAnimatedImage (Logging)
 
 + (void)setLogBlock:(void (^)(NSString *logString, FLLogLevel logLevel))logBlock logLevel:(FLLogLevel)logLevel;
 + (void)logStringFromBlock:(NSString *(^)(void))stringBlock withLevel:(FLLogLevel)level;
 
 @end
-
-//#define FLLog(logLevel, format, ...) [FLAnimatedImage logStringFromBlock:^NSString *{ return [NSString stringWithFormat:(format), ## __VA_ARGS__]; } withLevel:(logLevel)]
 
 // Try to detect and import CocoaLumberjack in all scenarious (library versions, way of including it, CocoaPods versions, etc.).
 #if FLLumberjackIntegrationEnabled

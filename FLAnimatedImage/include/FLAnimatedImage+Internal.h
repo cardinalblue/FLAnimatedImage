@@ -34,7 +34,6 @@ static NSNumber *FLDelayTimeFloor(NSNumber *delayTime)
     // This is how the fastest browsers do it as per 2012: http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility
     // To support the minimum even when rounding errors occur, use an epsilon when comparing. We downcast to float because that's what we get for delayTime from ImageIO.
     if ([delayTime floatValue] < ((float)kDelayTimeIntervalMinimum - FLT_EPSILON)) {
-        //TODO: from FB
         FLLogInfo(@"Rounding frame %zu's `delayTime` from %f up to default %f (minimum supported: %f).", i, [delayTime floatValue], kDelayTimeIntervalDefault, kDelayTimeIntervalMinimum);
         return @(kDelayTimeIntervalDefault);
     }

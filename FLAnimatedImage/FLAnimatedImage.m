@@ -51,10 +51,11 @@ typedef NS_ENUM(NSUInteger, FLAnimatedImageFrameCacheSize) {
 
 @protocol FLAnimatedImageViewDebugDelegate;
 
-
-
-//#if defined(DEBUG) && DEBUG
-@interface FLAnimatedImage () //<FLAnimatedImageViewDebugDelegate>
+#if defined(DEBUG) && DEBUG
+@interface FLAnimatedImage () <FLAnimatedImageDebugDelegate>
+#else
+@interface FLAnimatedImage ()
+#endif
 
 @property (nonatomic, assign, readonly) NSUInteger frameCacheSizeOptimal; // The optimal number of frames to cache based on image size & number of frames; never changes
 @property (nonatomic, assign, readonly, getter=isPredrawingEnabled) BOOL predrawingEnabled; // Enables predrawing of images to improve performance.
@@ -77,7 +78,6 @@ typedef NS_ENUM(NSUInteger, FLAnimatedImageFrameCacheSize) {
 @property (nonatomic, strong, readonly) FLAnimatedImage *weakProxy;
 
 @end
-//#endif
 
 static NSHashTable *allAnimatedImagesWeak;
 
@@ -286,31 +286,6 @@ static NSHashTable *allAnimatedImagesWeak;
         [frameIndexesToAddToCache enumerateRangesInRange:secondRange options:0 usingBlock:frameRangeBlock];
     });
 }
-
-
-//+ (CGSize)sizeForImage:(id)image
-//{
-//    CGSize imageSize = CGSizeZero;
-//    
-//    // Early return for nil
-//    if (!image) {
-//        return imageSize;
-//    }
-//    
-//    if ([image isKindOfClass:[UIImage class]]) {
-//        UIImage *const uiImage = (UIImage *)image;
-//        imageSize = uiImage.size;
-//    } else if ([image isKindOfClass:[FLAnimatedImage class]]) {
-//        FLAnimatedImage *const animatedImage = (FLAnimatedImage *)image;
-//        imageSize = animatedImage.size;
-//    } else {
-//        // Bear trap to capture bad images; we have seen crashers cropping up on iOS 7.
-//        FLLog(FLLogLevelError, @"`image` isn't of expected types `UIImage` or `FLAnimatedImage`: %@", image);
-//    }
-//    
-//    return imageSize;
-//}
-
 
 #pragma mark - Private Methods
 #pragma mark Frame Loading

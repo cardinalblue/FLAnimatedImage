@@ -13,12 +13,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-//#if defined(DEBUG) && DEBUG
+#if defined(DEBUG) && DEBUG
 @protocol FLAnimatedImageViewDebugDelegate <NSObject>
 @optional
 - (void)debug_animatedImageView:(FLAnimatedImageView *)animatedImageView waitingForFrame:(NSUInteger)index duration:(NSTimeInterval)duration;
 @end
-//#endif
+#endif
 
 
 @interface FLAnimatedImageView ()
