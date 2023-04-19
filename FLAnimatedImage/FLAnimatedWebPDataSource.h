@@ -20,6 +20,5 @@
  * frameInfo - array of `FLAnimatedWebPFrameInfo` objects.
  */
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo;
-//- (UIImage * _Nullable)blendedImageAtIndex:(NSUInteger)index;
 
 @end

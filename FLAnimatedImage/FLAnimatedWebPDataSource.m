@@ -39,16 +39,13 @@
     return self;
 }
 
-//- (UIImage *)blendedImageAtIndex:(NSUInteger)index
-//{
-//    if (index < _blendedImages.count) {
-//        return _blendedImages[index];
-//    }
-//    return nil;
-//}
-
 - (UIImage *)imageAtIndex:(NSUInteger)index
 {
+    // Use blended images if it has already been created
+    if (index < _blendedImages.count) {
+        return _blendedImages[index];
+    }
+
     WebPIterator iterator;
     if (!WebPDemuxGetFrame(_demuxer.demuxer, (int)index + 1, &iterator)) {
         return nil;
@@ -69,7 +66,6 @@
 
 - (BOOL)frameRequiresBlendingWithPreviousFrame:(NSUInteger)index
 {
-//    return NO;
     if (index == 0) {
         return NO;
     }
@@ -101,7 +97,6 @@
 
 - (UIImage *)blendImage:(UIImage *)image atIndex:(NSUInteger)index withPreviousImage:(UIImage *)previousImage
 {
-//    return image;
     if (index < _blendedImages.count && _blendedImages[index]) {
         return _blendedImages[index];
     }
