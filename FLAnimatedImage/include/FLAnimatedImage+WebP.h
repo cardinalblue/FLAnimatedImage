@@ -15,8 +15,6 @@ typedef NS_ENUM(NSInteger, WebPDecodeType) {
 
 @interface FLAnimatedImage (WebP)
 
-
 + (FLAnimatedImage *)animatedImageWithWebPData:(NSData *)data decodeType:(WebPDecodeType)type;
-//+ (FLAnimatedImage *)builtInAnimatedImageWithWebPData:(NSData *)data;
 
 @end

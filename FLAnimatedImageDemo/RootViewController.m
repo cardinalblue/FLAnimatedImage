@@ -245,7 +245,6 @@
     NSString *const diskPath = [NSHomeDirectory() stringByAppendingPathComponent:filename];
     
     NSData * __block animatedImageData = [[NSFileManager defaultManager] contentsAtPath:diskPath];
-//    FLAnimatedImage * __block animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
     FLAnimatedImage * __block animatedImage = [FLAnimatedImage animatedImageWithGIFData:animatedImageData];
     
     if (animatedImage) {

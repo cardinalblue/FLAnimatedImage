@@ -125,13 +125,13 @@
     CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, (__bridge CFDictionaryRef)options);
     NSDictionary *frameProperties = (__bridge_transfer NSDictionary *)cfFrameProperties;
     if (frameProperties) {
-        NSDictionary *containerProperties = frameProperties[(NSString *)kCGImagePropertyWebPDictionary];//kCGImagePropertyGIFDictionary
+        NSDictionary *containerProperties = frameProperties[(NSString *)kCGImagePropertyWebPDictionary];
         if (containerProperties) {
-            NSNumber *unclampedDelayTime = containerProperties[(NSString *)kCGImagePropertyWebPUnclampedDelayTime];//kCGImagePropertyGIFUnclampedDelayTime
+            NSNumber *unclampedDelayTime = containerProperties[(NSString *)kCGImagePropertyWebPUnclampedDelayTime];
             if (unclampedDelayTime.floatValue > 0.011) {
                 frameDuration = unclampedDelayTime.floatValue;
             } else {
-                NSNumber *delayTime = containerProperties[(NSString *)kCGImagePropertyWebPDelayTime]; //kCGImagePropertyGIFDelayTime
+                NSNumber *delayTime = containerProperties[(NSString *)kCGImagePropertyWebPDelayTime];
                 if (delayTime.floatValue > 0.011) {
                     frameDuration = delayTime.floatValue;
                 }

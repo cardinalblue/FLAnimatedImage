@@ -113,6 +113,7 @@
 				30EF775329CC6259004EE643 /* FLAnimatedGIFDataSource.m */,
 				30EF775D29E3C405004EE643 /* FLAnimatedImage+WebP.m */,
 				30EF776029E3C822004EE643 /* FLAnimatedBuiltInWebPDataSource.m */,
+				30EF776B29E40CA8004EE643 /* WebPImageDecoder.h */,
 				30EF776C29E40CA8004EE643 /* WebPImageDecoder.m */,
 				3017245229E6BB0C004D15C0 /* FLAnimatedWebPDemuxer.h */,
 				3017245129E6BB0C004D15C0 /* FLAnimatedWebPDemuxer.m */,
@@ -160,7 +161,6 @@
 				30EF775229CC6259004EE643 /* FLAnimatedGIFDataSource.h */,
 				30EF775B29E3C361004EE643 /* FLAnimatedImage+WebP.h */,
 				30EF775F29E3C822004EE643 /* FLAnimatedBuiltInWebPDataSource.h */,
-				30EF776B29E40CA8004EE643 /* WebPImageDecoder.h */,
 				30EBE18029EA956E00E62A94 /* FLAnimatedImage+Extension.h */,
 			);
 			path = include;
