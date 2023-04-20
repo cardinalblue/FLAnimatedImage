@@ -8,7 +8,7 @@
 #import "FLAnimatedImage+Internal.h"
 #import "FLAnimatedBuiltInWebPDataSource.h"
 #import "FLAnimatedWebPDataSource.h"
-#import "WebPImageDecoder.h"
+#import "FLAnimatedWebPImageDecoder.h"
 #import "FLAnimatedWebPDemuxer.h"
 #import "FLAnimatedWebPFrameInfo.h"
 #import "FLWebPUtilities.h"
@@ -109,9 +109,9 @@
     NSUInteger posterImageFrameIndex = 0;
     NSUInteger skippedFrameCount = 0;
 
-    WebPImageDecoder *decoder = [[WebPImageDecoder alloc] initWithData:data];
+    FLAnimatedWebPImageDecoder *decoder = [[FLAnimatedWebPImageDecoder alloc] initWithData:data];
     NSMutableDictionary *delayTimesForIndexesMutable = [NSMutableDictionary dictionaryWithCapacity:decoder.frameCount];
-    NSArray<ImageFrame *> *imageFrames = decoder.imageFrames;
+    NSArray<FLAnimatedWebPImageFrame *> *imageFrames = decoder.imageFrames;
     for(int i = 0; i < decoder.frameCount; i++) {
         NSTimeInterval delayTime = imageFrames[i].duration;
         delayTimesForIndexesMutable[@(i)] = FLDelayTimeFloor(@((double)delayTime / 1000));

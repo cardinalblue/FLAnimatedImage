@@ -1,34 +1,23 @@
 //
-//  WebPImageDecoder.m
+//  FLAnimatedWebPImageDecoder.m
 //  FLAnimatedImage
 //
 //  Created by Sih Ou-Yang on 2023/4/10.
 //  Copyright © 2023 com.flipboard. All rights reserved.
 //
 
-#import "WebPImageDecoder.h"
+#import "FLAnimatedWebPImageDecoder.h"
 #import "UIImage+Extension.h"
+#import "FLAnimatedWebPImageFrame.h"
 
-@implementation ImageFrame
 
-- (instancetype)initWithImage:(UIImage *)image duration:(NSTimeInterval)duration {
-    self = [super init];
-    if (self) {
-        self.image = image;
-        self.duration = duration;
-    }
-    return self;
-}
-
-@end
-
-@interface WebPImageDecoder()
+@interface FLAnimatedWebPImageDecoder()
 
 @property(nonatomic) CGImageSourceRef source;
 
 @end
 
-@implementation WebPImageDecoder
+@implementation FLAnimatedWebPImageDecoder
 
 - (instancetype)initWithData:(NSData *)data {
     self = [super init];
@@ -65,7 +54,7 @@
     if (self.frameCount == 1) {
         return [self createFrameAtIndex:0 source:self.source scale:scale options:nil];
     } else if (self.frameCount > 1) {
-        NSMutableArray<ImageFrame *> *frames = [NSMutableArray arrayWithCapacity:self.frameCount];
+        NSMutableArray<FLAnimatedWebPImageFrame *> *frames = [NSMutableArray arrayWithCapacity:self.frameCount];
         for (size_t i = 0; i < self.frameCount; i++) {
             UIImage *image = [self createFrameAtIndex:i source:self.source scale:scale options:nil];
             if (!image) {
@@ -73,7 +62,7 @@
             }
 
             NSTimeInterval duration = [self frameDurationAtIndex:i source:self.source];
-            ImageFrame *frame = [[ImageFrame alloc] initWithImage:image duration:duration];
+            FLAnimatedWebPImageFrame *frame = [[FLAnimatedWebPImageFrame alloc] initWithImage:image duration:duration];
             [frames addObject:frame];
         }
 

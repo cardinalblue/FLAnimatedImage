@@ -8,10 +8,10 @@
 
 
 #import "RootViewController.h"
-#import <FLAnimatedImage/FLAnimatedImage.h>
+//#import <FLAnimatedImage/FLAnimatedImage.h>
 #import "DebugView.h"
-#import <FLAnimatedImage/FLAnimatedImage+GIF.h>
-#import <FLAnimatedImage/FLAnimatedImage+WebP.h>
+//#import <FLAnimatedImage/FLAnimatedImage+GIF.h>
+//#import <FLAnimatedImage/FLAnimatedImage+WebP.h>
 #import <FLAnimatedImage/FLAnimatedImage+Extension.h>
 
 @interface RootViewController ()
@@ -80,7 +80,7 @@
     
     NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"rock" withExtension:@"gif"];
     NSData *data1 = [NSData dataWithContentsOfURL:url1];
-    FLAnimatedImage *animatedImage1 = [FLAnimatedImage animatedImageWithGIFData:data1];
+    FLAnimatedImage *animatedImage1 = [FLAnimatedImage animatedImageWithData:data1];
     self.imageView1.animatedImage = animatedImage1;
     
     // 2
@@ -245,7 +245,7 @@
     NSString *const diskPath = [NSHomeDirectory() stringByAppendingPathComponent:filename];
     
     NSData * __block animatedImageData = [[NSFileManager defaultManager] contentsAtPath:diskPath];
-    FLAnimatedImage * __block animatedImage = [FLAnimatedImage animatedImageWithGIFData:animatedImageData];
+    FLAnimatedImage * __block animatedImage = [FLAnimatedImage animatedImageWithData:animatedImageData];
     
     if (animatedImage) {
         if (completion) {

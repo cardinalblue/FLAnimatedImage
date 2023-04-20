@@ -402,19 +402,21 @@ static NSHashTable *allAnimatedImagesWeak;
         return image;
     }
 
-
-
+    // Origin:
     // Hopefully we won't hit the code path often, as it will be expensive if for frame N
     // we need to render frames [0-(N-1)]. It is possible we'll hit this for particularly large
     // images, or after a memory warning.
-    // TODO: Look into always caching (_requestedFrameIndex - 1) to reduce the likelihood of
+    // Suggesting look into always caching (_requestedFrameIndex - 1) to reduce the likelihood of
     // running into this code path.
+    //
+    // Current:
+    // => To improve webp performance, once we create blended image, we cache it in datasource immediately
+    //    and use it afterward.
+
     image = [self.dataSource imageAtIndex:index];
     if ([self.dataSource frameRequiresBlendingWithPreviousFrame:index]) {
-//        UIImage *previousImage = [self synchronousImageAtIndex:index - 1]; // NOTE: 加上外面的迴圈 這樣不就變成 n x n ??
         UIImage *previousImage;
         if (index != 0) {
-//            previousImage = _cachedFramesForIndexes[@(index-1)];
             previousImage = [self.dataSource imageAtIndex:index - 1];
         }
         image = [self.dataSource blendImage:image atIndex:index withPreviousImage:previousImage];

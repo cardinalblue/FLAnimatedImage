@@ -1,18 +1,18 @@
 #import "FLAnimatedBuiltInWebPDataSource.h"
-#import "WebPImageDecoder.h"
+#import "FLAnimatedWebPImageDecoder.h"
 #import "UIImage+Extension.h"
 
 const CGFloat kScale = 1.0;
 
 @interface FLAnimatedBuiltInWebPDataSource ()
 
-@property(nonatomic) WebPImageDecoder *decoder;
+@property(nonatomic) FLAnimatedWebPImageDecoder *decoder;
 
 @end
 
 @implementation FLAnimatedBuiltInWebPDataSource
 
-- (instancetype)initWithDecoder:(WebPImageDecoder *)decoder {
+- (instancetype)initWithDecoder:(FLAnimatedWebPImageDecoder *)decoder {
     self = [super init];
     if (self) {
         _decoder = decoder;

@@ -167,10 +167,4 @@
     self.currentFrameDelay += duration;
 }
 
-- (void)debug_animatedImagePredrawingSlowdownFactor:(FLAnimatedImageView *)animatedImage
-{
-    
-}
-
-
 @end

@@ -16,8 +16,6 @@
 #endif
 
 #import "FLAnimatedImageData.h"
-//#import "FLAnimatedImageView.h"
-//#import <FLAnimatedImage/FLAnimatedImageView.h>
 #import "FLAnimatedImage+Internal.h"
 #import "FLAnimatedImageFrameCache.h"
 
@@ -82,12 +80,6 @@ typedef NS_ENUM(NSUInteger, FLAnimatedImageFrameCacheSize) {
 static NSHashTable *allAnimatedImagesWeak;
 
 @implementation FLAnimatedImage
-
-
-// For custom dispatching of memory warnings to avoid deallocation races since NSNotificationCenter doesn't retain objects it is notifying.
-
-
-//@implementation FLAnimatedImage
 
 #pragma mark - Accessors
 #pragma mark Public
@@ -527,7 +519,10 @@ static NSHashTable *allAnimatedImagesWeak;
 
 - (CGFloat)debug_animatedImagePredrawingSlowdownFactor:(FLAnimatedImage *)animatedImage
 {
-    return [self.debug_delegate debug_animatedImagePredrawingSlowdownFactor:self];
+    if ([self.debug_delegate respondsToSelector:@selector(debug_animatedImagePredrawingSlowdownFactor:)]) {
+        return [self.debug_delegate debug_animatedImagePredrawingSlowdownFactor:self];
+    }
+    return 0;
 }
 
 #endif

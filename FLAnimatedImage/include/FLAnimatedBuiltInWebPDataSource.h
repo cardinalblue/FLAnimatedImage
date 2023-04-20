@@ -10,10 +10,10 @@
 
 #import <FLAnimatedImageFrameDataSource.h>
 
-@class WebPImageDecoder;
+#import "FLAnimatedWebPImageDecoder.h"
 
 @interface FLAnimatedBuiltInWebPDataSource : NSObject <FLAnimatedImageFrameDataSource>
 
-- (instancetype)initWithDecoder:(WebPImageDecoder *)decoder;
+- (instancetype)initWithDecoder:(FLAnimatedWebPImageDecoder *)decoder;
 
 @end

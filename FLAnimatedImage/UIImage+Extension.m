@@ -8,11 +8,12 @@
 
 #import "UIImage+Extension.h"
 
-#import "WebPImageDecoder.h"
+#import "FLAnimatedWebPImageDecoder.h"
+#import "FLAnimatedWebPImageFrame.h"
 
 @implementation UIImage (Extension)
 
-+ (UIImage *)animatedImageWithFrames:(NSArray<ImageFrame *> *)imageFrames {
++ (UIImage *)animatedImageWithFrames:(NSArray<FLAnimatedWebPImageFrame *> *)imageFrames {
     if (imageFrames.count == 0) {
         return nil;
     }
