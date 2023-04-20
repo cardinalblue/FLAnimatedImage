@@ -188,7 +188,7 @@ static NSHashTable *allAnimatedImagesWeak;
         
         _loopCount = loopCount;
         _delayTimesForIndexes = [delayTimesForIndexes copy];
-        _data = data;
+        _animatedImageData = data;
     }
     return self;
 }

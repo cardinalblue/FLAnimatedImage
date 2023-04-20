@@ -54,7 +54,7 @@ extern const NSTimeInterval kFLAnimatedImageDelayTimeIntervalMinimum;
 @property (nonatomic, assign, readonly) NSUInteger frameCacheSizeCurrent; // Current size of intelligently chosen buffer window; can range in the interval [1..frameCount]
 @property (nonatomic, assign) NSUInteger frameCacheSizeMax; // Allow to cap the cache size; 0 means no specific limit (default)
 
-@property (nonatomic, strong, readonly) FLAnimatedImageData *data;
+@property (nonatomic, strong, readonly) FLAnimatedImageData *animatedImageData;
 
 @property (nonatomic, strong, readonly) id<FLAnimatedImageFrameDataSource> frameDataSource;
 
