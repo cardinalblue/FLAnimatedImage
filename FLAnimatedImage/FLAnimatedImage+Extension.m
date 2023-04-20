@@ -78,7 +78,7 @@
     if (data.isGIF) {
         return [FLAnimatedImage animatedImageWithGIFData:data];
     } else if (data.isWebP) {
-        return [FLAnimatedImage animatedImageWithWebPData:data decodeType:WebPDecodeLib];
+        return [FLAnimatedImage animatedImageWithWebPData:data decodeType:WebPDecodeLibWebP];
     } else {
         return nil;
     }

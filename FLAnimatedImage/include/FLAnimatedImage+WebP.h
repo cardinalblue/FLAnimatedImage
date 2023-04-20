@@ -9,8 +9,8 @@
 #import <FLAnimatedImage/FLAnimatedImage.h>
 
 typedef NS_ENUM(NSInteger, WebPDecodeType) {
-    WebPDecodeBuiltIn,
-    WebPDecodeLib
+    WebPDecodeSystem, // use the iOS 14 built-in feature to decode webp
+    WebPDecodeLibWebP
 };
 
 @interface FLAnimatedImage (WebP)

@@ -6,7 +6,7 @@
 
 #import "FLAnimatedImage+WebP.h"
 #import "FLAnimatedImage+Internal.h"
-#import "FLAnimatedBuiltInWebPDataSource.h"
+#import "FLAnimatedSystemWebPDataSource.h"
 #import "FLAnimatedWebPDataSource.h"
 #import "FLAnimatedWebPImageDecoder.h"
 #import "FLAnimatedWebPDemuxer.h"
@@ -19,7 +19,7 @@
 
 + (FLAnimatedImage *)animatedImageWithWebPData:(NSData *)data decodeType:(WebPDecodeType)type {
     switch (type) {
-        case WebPDecodeBuiltIn:
+        case WebPDecodeSystem:
             return [FLAnimatedImage builtInAnimatedImageWithWebPData:data];
         default:
             return [FLAnimatedImage animatedImageWithWebPData:data];
@@ -124,7 +124,7 @@
         }
     }
 
-    FLAnimatedBuiltInWebPDataSource *dataSource = [[FLAnimatedBuiltInWebPDataSource alloc] initWithData:data];
+    FLAnimatedSystemWebPDataSource *dataSource = [[FLAnimatedSystemWebPDataSource alloc] initWithData:data];
     FLAnimatedImageData *webPData = [[FLAnimatedImageData alloc] initWithData:data type:FLAnimatedImageDataTypeWebP];
 
     FLAnimatedImage * image = [[FLAnimatedImage alloc] initWithData:webPData
