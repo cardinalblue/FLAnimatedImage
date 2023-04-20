@@ -10,8 +10,6 @@
 
 #import <FLAnimatedImageFrameDataSource.h>
 
-#import "FLAnimatedWebPImageDecoder.h"
-
 @interface FLAnimatedSystemWebPDataSource : NSObject <FLAnimatedImageFrameDataSource>
 
 - (instancetype)initWithData:(NSData *)data;
