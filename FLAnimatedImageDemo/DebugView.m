@@ -167,5 +167,4 @@
     self.currentFrameDelay += duration;
 }
 
-
 @end

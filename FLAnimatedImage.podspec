@@ -21,4 +21,5 @@ Pod::Spec.new do |spec|
   spec.source_files     = "FLAnimatedImage/**/*.{h,m}"
   spec.frameworks       = "QuartzCore", "ImageIO", "CoreGraphics"
   spec.requires_arc     = true
+  spec.dependency "libwebp"
 end

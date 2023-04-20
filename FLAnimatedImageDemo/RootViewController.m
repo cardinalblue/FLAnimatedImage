@@ -8,9 +8,8 @@
 
 
 #import "RootViewController.h"
-#import <FLAnimatedImage/FLAnimatedImage.h>
 #import "DebugView.h"
-
+#import <FLAnimatedImage/FLAnimatedImage+Extension.h>
 
 @interface RootViewController ()
 
@@ -78,7 +77,7 @@
     
     NSURL *url1 = [[NSBundle mainBundle] URLForResource:@"rock" withExtension:@"gif"];
     NSData *data1 = [NSData dataWithContentsOfURL:url1];
-    FLAnimatedImage *animatedImage1 = [FLAnimatedImage animatedImageWithGIFData:data1];
+    FLAnimatedImage *animatedImage1 = [FLAnimatedImage animatedImageWithData:data1];
     self.imageView1.animatedImage = animatedImage1;
     
     // 2
@@ -90,7 +89,9 @@
     [self.view addSubview:self.imageView2];
     self.imageView2.frame = CGRectMake(0.0, 577.0, 379.0, 447.0);
     
-    NSURL *url2 = [NSURL URLWithString:@"https://cloud.githubusercontent.com/assets/1567433/10417835/1c97e436-7052-11e5-8fb5-69373072a5a0.gif"];
+
+    NSURL *url2 = [NSURL URLWithString:@"https://colinbendell.github.io/webperf/animated-gif-decode/2.webp"];//@"https://picola-asset.piccollage.com/expires_in_days/7/imageassets/public_e0d4d366d4d2256ab6671c4bfb676cc9/800x800.webp"];
+
     [self loadAnimatedImageWithURL:url2 completion:^(FLAnimatedImage *animatedImage) {
         self.imageView2.animatedImage = animatedImage;
 
@@ -241,7 +242,7 @@
     NSString *const diskPath = [NSHomeDirectory() stringByAppendingPathComponent:filename];
     
     NSData * __block animatedImageData = [[NSFileManager defaultManager] contentsAtPath:diskPath];
-    FLAnimatedImage * __block animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
+    FLAnimatedImage * __block animatedImage = [FLAnimatedImage animatedImageWithData:animatedImageData];
     
     if (animatedImage) {
         if (completion) {
@@ -250,7 +251,8 @@
     } else {
         [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             animatedImageData = data;
-            animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
+            animatedImage = [FLAnimatedImage animatedImageWithData:animatedImageData];
+            
             if (animatedImage) {
                 if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{

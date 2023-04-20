@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		229D6DFF1C77D121000C59E6 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229D6DFE1C77D10D000C59E6 /* FLAnimatedImage.framework */; };
 		229D6E001C77D121000C59E6 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 229D6DFE1C77D10D000C59E6 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		693CF4274C925065C99FF5AE /* Pods_FLAnimatedImageDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F2410337F9902698B529F80 /* Pods_FLAnimatedImageDemo.framework */; };
 		870D79D51936EBFC009D1BCE /* rock.gif in Resources */ = {isa = PBXBuildFile; fileRef = 870D79D41936EBFC009D1BCE /* rock.gif */; };
 		872EBE70178B825500B7531B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872EBE6F178B825500B7531B /* UIKit.framework */; };
 		872EBE72178B825500B7531B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872EBE71178B825500B7531B /* Foundation.framework */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		229D6DF91C77D10D000C59E6 /* FLAnimatedImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = FLAnimatedImage.xcodeproj; sourceTree = "<group>"; };
+		2F2410337F9902698B529F80 /* Pods_FLAnimatedImageDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FLAnimatedImageDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		870D79D41936EBFC009D1BCE /* rock.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = rock.gif; path = "FLAnimatedImageDemo/test-gifs/rock.gif"; sourceTree = SOURCE_ROOT; };
 		872EBE6C178B825500B7531B /* FLAnimatedImageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLAnimatedImageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		872EBE6F178B825500B7531B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,8 @@
 		87CB5A0F1935A8C600620C16 /* RSPlayPauseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSPlayPauseButton.h; path = FLAnimatedImageDemo/RSPlayPauseButton.h; sourceTree = "<group>"; };
 		87CB5A101935A8C600620C16 /* RSPlayPauseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSPlayPauseButton.m; path = FLAnimatedImageDemo/RSPlayPauseButton.m; sourceTree = "<group>"; };
 		87CB5A171935A93F00620C16 /* FLAnimatedImageDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FLAnimatedImageDemo-Prefix.pch"; path = "FLAnimatedImageDemo/FLAnimatedImageDemo-Prefix.pch"; sourceTree = "<group>"; };
+		D61EACDD2889BC09ABC72911 /* Pods-FLAnimatedImageDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FLAnimatedImageDemo.debug.xcconfig"; path = "Target Support Files/Pods-FLAnimatedImageDemo/Pods-FLAnimatedImageDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D9FD217B433CDDF342F7074D /* Pods-FLAnimatedImageDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FLAnimatedImageDemo.release.xcconfig"; path = "Target Support Files/Pods-FLAnimatedImageDemo/Pods-FLAnimatedImageDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +104,23 @@
 				872EBEBD178B8FA000B7531B /* QuartzCore.framework in Frameworks */,
 				229D6DFF1C77D121000C59E6 /* FLAnimatedImage.framework in Frameworks */,
 				872EBEB3178B89DF00B7531B /* ImageIO.framework in Frameworks */,
+				693CF4274C925065C99FF5AE /* Pods_FLAnimatedImageDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1027E3815E3DF333764A3F24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D61EACDD2889BC09ABC72911 /* Pods-FLAnimatedImageDemo.debug.xcconfig */,
+				D9FD217B433CDDF342F7074D /* Pods-FLAnimatedImageDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		229D6DFA1C77D10D000C59E6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +136,7 @@
 				229D6DF91C77D10D000C59E6 /* FLAnimatedImage.xcodeproj */,
 				872EBE6E178B825500B7531B /* Frameworks */,
 				872EBE6D178B825500B7531B /* Products */,
+				1027E3815E3DF333764A3F24 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +157,7 @@
 				872EBEBC178B8FA000B7531B /* QuartzCore.framework */,
 				872EBEB2178B89DF00B7531B /* ImageIO.framework */,
 				872EBEBA178B8F9000B7531B /* MobileCoreServices.framework */,
+				2F2410337F9902698B529F80 /* Pods_FLAnimatedImageDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,10 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 872EBEA7178B825500B7531B /* Build configuration list for PBXNativeTarget "FLAnimatedImageDemo" */;
 			buildPhases = (
+				B3CA1075EC6E4E432FC528BD /* [CP] Check Pods Manifest.lock */,
 				872EBE68178B825500B7531B /* Sources */,
 				872EBE69178B825500B7531B /* Frameworks */,
 				872EBE6A178B825500B7531B /* Resources */,
 				229D6E031C77D121000C59E6 /* Embed Frameworks */,
+				02F3A8640F8280BD6F23C6AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +286,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02F3A8640F8280BD6F23C6AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FLAnimatedImageDemo/Pods-FLAnimatedImageDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FLAnimatedImageDemo/Pods-FLAnimatedImageDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3CA1075EC6E4E432FC528BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FLAnimatedImageDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		872EBE68178B825500B7531B /* Sources */ = {
@@ -405,6 +467,7 @@
 		};
 		872EBEA8178B825500B7531B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D61EACDD2889BC09ABC72911 /* Pods-FLAnimatedImageDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -424,6 +487,7 @@
 		};
 		872EBEA9178B825500B7531B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9FD217B433CDDF342F7074D /* Pods-FLAnimatedImageDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
