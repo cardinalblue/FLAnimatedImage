@@ -8,10 +8,7 @@
 
 
 #import "RootViewController.h"
-//#import <FLAnimatedImage/FLAnimatedImage.h>
 #import "DebugView.h"
-//#import <FLAnimatedImage/FLAnimatedImage+GIF.h>
-//#import <FLAnimatedImage/FLAnimatedImage+WebP.h>
 #import <FLAnimatedImage/FLAnimatedImage+Extension.h>
 
 @interface RootViewController ()

@@ -14,6 +14,6 @@
 
 @interface FLAnimatedBuiltInWebPDataSource : NSObject <FLAnimatedImageFrameDataSource>
 
-- (instancetype)initWithDecoder:(FLAnimatedWebPImageDecoder *)decoder;
+- (instancetype)initWithData:(NSData *)data;
 
 @end

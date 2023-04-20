@@ -8,8 +8,6 @@
 
 #import "FLAnimatedWebPImageFrame.h"
 
-//#import <UIKit/UIKit.h>
-
 @implementation FLAnimatedWebPImageFrame
 
 - (instancetype)initWithImage:(UIImage *)image duration:(NSTimeInterval)duration {

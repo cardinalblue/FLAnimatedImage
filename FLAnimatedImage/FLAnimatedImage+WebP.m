@@ -124,7 +124,7 @@
         }
     }
 
-    FLAnimatedBuiltInWebPDataSource *dataSource = [[FLAnimatedBuiltInWebPDataSource alloc] initWithDecoder:decoder];
+    FLAnimatedBuiltInWebPDataSource *dataSource = [[FLAnimatedBuiltInWebPDataSource alloc] initWithData:data];
     FLAnimatedImageData *webPData = [[FLAnimatedImageData alloc] initWithData:data type:FLAnimatedImageDataTypeWebP];
 
     FLAnimatedImage * image = [[FLAnimatedImage alloc] initWithData:webPData

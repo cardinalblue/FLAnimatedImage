@@ -12,10 +12,10 @@ const CGFloat kScale = 1.0;
 
 @implementation FLAnimatedBuiltInWebPDataSource
 
-- (instancetype)initWithDecoder:(FLAnimatedWebPImageDecoder *)decoder {
+- (instancetype)initWithData:(NSData *)data {
     self = [super init];
     if (self) {
-        _decoder = decoder;
+        _decoder = [[FLAnimatedWebPImageDecoder alloc] initWithData:data];
     }
     return self;
 }
