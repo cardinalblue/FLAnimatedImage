@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class ImageFrame;
+@class FLAnimatedWebPImageFrame;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Extension)
 
-+ (UIImage * _Nullable)animatedImageWithFrames:(NSArray<ImageFrame *> *)imageFrames;
++ (UIImage * _Nullable)animatedImageWithFrames:(NSArray<FLAnimatedWebPImageFrame *> *)imageFrames;
 + (UIImage *)predrawnImageFromImage:(UIImage *)imageToPredraw;
 
 @end

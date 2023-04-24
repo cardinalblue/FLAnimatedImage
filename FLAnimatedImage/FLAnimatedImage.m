@@ -185,10 +185,13 @@ static NSHashTable *allAnimatedImagesWeak;
         _posterImage = posterImage;
         _frameCount = frameCount;
         _size = size;
-        
         _loopCount = loopCount;
         _delayTimesForIndexes = [delayTimesForIndexes copy];
         _animatedImageData = data;
+        _imageSource = CGImageSourceCreateWithData(
+                                                   (__bridge CFDataRef)_animatedImageData.data
+                                                   ,(__bridge CFDictionaryRef)@{(NSString *)kCGImageSourceShouldCache: @NO}
+                                                   );
     }
     return self;
 }
