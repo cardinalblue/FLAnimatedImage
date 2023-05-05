@@ -21,7 +21,7 @@
     NSData *_data;
 
     CGRect _imageRect;
-    NSMutableArray<UIImage *> *_blendedImages;
+    NSMutableDictionary<NSNumber *, UIImage *> *_blendedImageDict;
 }
 
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo
@@ -30,7 +30,7 @@
     if (self) {
         _demuxer = demuxer;
         _frameInfo = [frameInfo copy];
-        _blendedImages = [[NSMutableArray alloc] init];
+        _blendedImageDict = [[NSMutableDictionary alloc] init];
 
         int pixelHeight = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_HEIGHT);
         int pixelWidth = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_WIDTH);
@@ -42,8 +42,8 @@
 - (UIImage *)imageAtIndex:(NSUInteger)index
 {
     // Use blended images if it has already been created
-    if (index < _blendedImages.count) {
-        return _blendedImages[index];
+    if (_blendedImageDict[@(index)]) {
+        return _blendedImageDict[@(index)];
     }
 
     WebPIterator iterator;
@@ -97,9 +97,10 @@
 
 - (UIImage *)blendImage:(UIImage *)image atIndex:(NSUInteger)index withPreviousImage:(UIImage *)previousImage
 {
-    if (index < _blendedImages.count && _blendedImages[index]) {
-        return _blendedImages[index];
+    if (_blendedImageDict[@(index)]) {
+        return _blendedImageDict[@(index)];
     }
+
     FLAnimatedWebPFrameInfo *previousFrameInfo = _frameInfo[index - 1];
     FLAnimatedWebPFrameInfo *frameInfo = _frameInfo[index];
 
@@ -126,12 +127,12 @@
     if (newCGImage) {
         UIImage *newImage = [UIImage imageWithCGImage:newCGImage];
         CGImageRelease(newCGImage);
-        [_blendedImages addObject:newImage];
+        _blendedImageDict[@(index)] = newImage;
         return newImage;
     }
 
-    [_blendedImages addObject:image];
-    // Drawing the blended image failed, fallback to `image`
+    _blendedImageDict[@(index)] = image;
+//     Drawing the blended image failed, fallback to `image`
     return image;
 }
 

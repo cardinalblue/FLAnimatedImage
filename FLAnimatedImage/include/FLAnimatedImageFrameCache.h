@@ -14,6 +14,11 @@
 @protocol FLAnimatedImageDebugDelegate;
 #endif
 
+typedef NS_ENUM(NSUInteger, FLAnimatedImagePreferFrameCacheStrategy) {
+    FLAnimatedImagePreferFrameCacheStrategyBest,
+    FLAnimatedImagePreferFrameCacheStrategyDefault
+};
+
 @interface FLAnimatedImageFrameCache : NSObject
 
 /**
@@ -26,9 +31,11 @@
  * posterImage - a static representation of the animated image, typically the first frame of the image.
  * posterImageIndex - the index of the poster image frame.
  */
+
 - (instancetype)initWithFrameCount:(NSUInteger)frameCount
                  skippedFrameCount:(NSUInteger)skippedFrameCount
                          frameSize:(CGFloat)frameSize
+          preferFrameCacheStrategy:(FLAnimatedImagePreferFrameCacheStrategy)strategy
                        posterImage:(UIImage *)posterImage
                   posterImageIndex:(NSUInteger)posterImageIndex
                         dataSource:(id<FLAnimatedImageFrameDataSource>)dataSource;

@@ -95,9 +95,12 @@ static NSHashTable *allAnimatedImagesWeak;
 
 #pragma mark - Life Cycle
 
+
+
 - (instancetype)initWithFrameCount:(NSUInteger)frameCount
                  skippedFrameCount:(NSUInteger)skippedFrameCount
                          frameSize:(CGFloat)frameSize
+          preferFrameCacheStrategy:(FLAnimatedImagePreferFrameCacheStrategy)strategy
                        posterImage:(UIImage *)posterImage
                   posterImageIndex:(NSUInteger)posterImageIndex
                         dataSource:(id<FLAnimatedImageFrameDataSource>)dataSource
@@ -125,14 +128,21 @@ static NSHashTable *allAnimatedImagesWeak;
         _cachedFramesForIndexes = [cachedFramesForIndexes copy];
 
         CGFloat animatedImageDataSize = frameSize * (_frameCount - skippedFrameCount) / MEGABYTE;
-        if (animatedImageDataSize <= FLAnimatedImageDataSizeCategoryAll) {
-            _frameCacheSizeOptimal = _frameCount;
-        } else if (animatedImageDataSize <= FLAnimatedImageDataSizeCategoryDefault) {
-            // This value doesn't depend on device memory much because if we're not keeping all frames in memory we will always be decoding 1 frame up ahead per 1 frame that gets played and at this point we might as well just keep a small buffer just large enough to keep from running out of frames.
-            _frameCacheSizeOptimal = FLAnimatedImageFrameCacheSizeDefault;
-        } else {
-            // The predicted size exceeds the limits to build up a cache and we go into low memory mode from the beginning.
-            _frameCacheSizeOptimal = FLAnimatedImageFrameCacheSizeLowMemory;
+        switch (strategy) {
+            case FLAnimatedImagePreferFrameCacheStrategyBest:
+                _frameCacheSizeOptimal = FLAnimatedImageFrameCacheSizeDefault;
+                break;
+            default:
+                if (animatedImageDataSize <= FLAnimatedImageDataSizeCategoryAll) {
+                    _frameCacheSizeOptimal = _frameCount;
+                } else if (animatedImageDataSize <= FLAnimatedImageDataSizeCategoryDefault) {
+                    // This value doesn't depend on device memory much because if we're not keeping all frames in memory we will always be decoding 1 frame up ahead per 1 frame that gets played and at this point we might as well just keep a small buffer just large enough to keep from running out of frames.
+                    _frameCacheSizeOptimal = FLAnimatedImageFrameCacheSizeDefault;
+                } else {
+                    // The predicted size exceeds the limits to build up a cache and we go into low memory mode from the beginning.
+                    _frameCacheSizeOptimal = FLAnimatedImageFrameCacheSizeLowMemory;
+                }
+                break;
         }
         // In any case, cap the optimal cache size at the frame count.
         _frameCacheSizeOptimal = MIN(_frameCacheSizeOptimal, _frameCount);
