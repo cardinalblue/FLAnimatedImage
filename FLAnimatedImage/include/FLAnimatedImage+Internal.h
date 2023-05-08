@@ -17,7 +17,7 @@
                   frameCount:(NSUInteger)frameCount
            skippedFrameCount:(NSUInteger)skippedFrameCount
         delayTimesForIndexes:(NSDictionary *)delayTimesForIndexes
-    preferFrameCacheStrategy:(FLAnimatedImagePreferFrameCacheStrategy)strategy
+    preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
                  posterImage:(UIImage *)posterImage
             posterImageIndex:(NSUInteger)posterImageIndex
              frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource;

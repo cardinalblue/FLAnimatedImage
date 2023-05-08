@@ -14,9 +14,9 @@
 @protocol FLAnimatedImageDebugDelegate;
 #endif
 
-typedef NS_ENUM(NSUInteger, FLAnimatedImagePreferFrameCacheStrategy) {
-    FLAnimatedImagePreferFrameCacheStrategyBest,
-    FLAnimatedImagePreferFrameCacheStrategyDefault
+typedef NS_ENUM(NSUInteger, FLAnimatedImagePreferredFrameCacheStrategy) {
+    FLAnimatedImagePreferredFrameCacheStrategyBest,   // Set the frame cache size to 5
+    FLAnimatedImagePreferredFrameCacheStrategyDataSizeOptimized // Set the frame cache size according to the total frames
 };
 
 @interface FLAnimatedImageFrameCache : NSObject
@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, FLAnimatedImagePreferFrameCacheStrategy) {
 - (instancetype)initWithFrameCount:(NSUInteger)frameCount
                  skippedFrameCount:(NSUInteger)skippedFrameCount
                          frameSize:(CGFloat)frameSize
-          preferFrameCacheStrategy:(FLAnimatedImagePreferFrameCacheStrategy)strategy
+          preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
                        posterImage:(UIImage *)posterImage
                   posterImageIndex:(NSUInteger)posterImageIndex
                         dataSource:(id<FLAnimatedImageFrameDataSource>)dataSource;

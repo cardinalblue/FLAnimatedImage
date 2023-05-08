@@ -132,7 +132,7 @@
     }
 
     _blendedImageDict[@(index)] = image;
-//     Drawing the blended image failed, fallback to `image`
+    // Drawing the blended image failed, fallback to `image`
     return image;
 }
 

@@ -98,7 +98,7 @@
                                       frameCount:frameCount
                                skippedFrameCount:skippedFrameCount
                             delayTimesForIndexes:delayTimesForIndexesMutable
-                        preferFrameCacheStrategy:FLAnimatedImagePreferFrameCacheStrategyBest
+                        preferFrameCacheStrategy:FLAnimatedImagePreferredFrameCacheStrategyBest
                                      posterImage:posterImage
                                 posterImageIndex:posterImageFrameIndex
                                  frameDataSource:dataSource];
@@ -134,7 +134,7 @@
                                                          frameCount:decoder.frameCount
                                                   skippedFrameCount:skippedFrameCount
                                                delayTimesForIndexes:delayTimesForIndexesMutable
-                                           preferFrameCacheStrategy:FLAnimatedImagePreferFrameCacheStrategyBest
+                                           preferFrameCacheStrategy:FLAnimatedImagePreferredFrameCacheStrategyBest
                                                         posterImage:posterImage
                                                    posterImageIndex:posterImageFrameIndex
                                                     frameDataSource:dataSource];
