@@ -90,7 +90,7 @@
     self.imageView2.frame = CGRectMake(0.0, 577.0, 379.0, 447.0);
     
 
-    NSURL *url2 = [NSURL URLWithString:@"https://picola-asset.piccollage.com/expires_in_days/7/imageassets/public_e0d4d366d4d2256ab6671c4bfb676cc9/800x800.webp?revision=1682413820"];//@"https://colinbendell.github.io/webperf/animated-gif-decode/2.webp"];//@"https://picola-asset.piccollage.com/expires_in_days/7/imageassets/public_e0d4d366d4d2256ab6671c4bfb676cc9/800x800.webp"];
+    NSURL *url2 = [NSURL URLWithString:@"https://colinbendell.github.io/webperf/animated-gif-decode/2.webp"];
 
     [self loadAnimatedImageWithURL:url2 completion:^(FLAnimatedImage *animatedImage) {
         self.imageView2.animatedImage = animatedImage;
