@@ -7,6 +7,7 @@
 //
 
 #import "FLAnimatedImage.h"
+#import "FLAnimatedImageFrameCache.h"
 
 @interface FLAnimatedImage (Internal)
 
@@ -16,10 +17,10 @@
                   frameCount:(NSUInteger)frameCount
            skippedFrameCount:(NSUInteger)skippedFrameCount
         delayTimesForIndexes:(NSDictionary *)delayTimesForIndexes
+    preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
                  posterImage:(UIImage *)posterImage
             posterImageIndex:(NSUInteger)posterImageIndex
              frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource;
-
 @end
 
 // If a frame has a delay time less than kDelayTimeIntervalMinimum, we instead use kDelayTimeIntervalDefault as the

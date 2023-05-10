@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, FLAnimatedImageFrameCacheSize) {
     FLAnimatedImageFrameCacheSizeNoLimit = 0,                // 0 means no specific limit
     FLAnimatedImageFrameCacheSizeLowMemory = 1,              // The minimum frame cache size; this will produce frames on-demand.
     FLAnimatedImageFrameCacheSizeGrowAfterMemoryWarning = 2, // If we can produce the frames faster than we consume, one frame ahead will already result in a stutter-free playback.
-    FLAnimatedImageFrameCacheSizeDefault = 5                 // Build up a comfy buffer window to cope with CPU hiccups etc.
+    FLAnimatedImageFrameCacheSizeBest = 5                 // Build up a comfy buffer window to cope with CPU hiccups etc.
 };
 
 @protocol FLAnimatedImageViewDebugDelegate;
@@ -167,15 +167,17 @@ static NSHashTable *allAnimatedImagesWeak;
                   frameCount:(NSUInteger)frameCount
            skippedFrameCount:(NSUInteger)skippedFrameCount
         delayTimesForIndexes:(NSDictionary *)delayTimesForIndexes
+    preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
                  posterImage:(UIImage *)posterImage
             posterImageIndex:(NSUInteger)posterImageIndex
-             frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource
+             frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource;
 {
     if (self = [super init]) {
         _frameDataSource = frameDataSource;
         _frameCache = [[FLAnimatedImageFrameCache alloc] initWithFrameCount:frameCount
                                                           skippedFrameCount:skippedFrameCount
                                                                   frameSize:CGImageGetBytesPerRow(posterImage.CGImage) * size.height
+                                                   preferFrameCacheStrategy:strategy
                                                                 posterImage:posterImage
                                                            posterImageIndex:posterImageIndex
                                                                  dataSource:frameDataSource];
