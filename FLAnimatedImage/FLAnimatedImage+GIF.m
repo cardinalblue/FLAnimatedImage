@@ -145,7 +145,7 @@
                                       frameCount:frameCount
                                skippedFrameCount:skippedFrameCount
                             delayTimesForIndexes:delayTimesForIndexesMutable
-                        preferFrameCacheStrategy:FLAnimatedImagePreferredFrameCacheStrategyDataSizeOptimized
+                        preferFrameCacheStrategy:FLAnimatedImagePreferredFrameCacheStrategyOptimizedForTotalFrames
                                      posterImage:posterImage
                                 posterImageIndex:posterImageFrameIndex
                                  frameDataSource:dataSource];

@@ -129,10 +129,10 @@ static NSHashTable *allAnimatedImagesWeak;
 
         CGFloat animatedImageDataSize = frameSize * (_frameCount - skippedFrameCount) / MEGABYTE;
         switch (strategy) {
-            case FLAnimatedImagePreferredFrameCacheStrategyBest:
+            case FLAnimatedImagePreferredFrameCacheStrategyDefault:
                 _frameCacheSizeOptimal = FLAnimatedImageFrameCacheSizeBest;
                 break;
-            case FLAnimatedImagePreferredFrameCacheStrategyDataSizeOptimized:
+            case FLAnimatedImagePreferredFrameCacheStrategyOptimizedForTotalFrames:
                 if (animatedImageDataSize <= FLAnimatedImageDataSizeCategoryAll) {
                     _frameCacheSizeOptimal = _frameCount;
                 } else if (animatedImageDataSize <= FLAnimatedImageDataSizeCategoryDefault) {

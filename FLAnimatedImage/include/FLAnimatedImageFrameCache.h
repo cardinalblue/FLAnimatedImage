@@ -15,8 +15,8 @@
 #endif
 
 typedef NS_ENUM(NSUInteger, FLAnimatedImagePreferredFrameCacheStrategy) {
-    FLAnimatedImagePreferredFrameCacheStrategyBest,   // Set the frame cache size to 5
-    FLAnimatedImagePreferredFrameCacheStrategyDataSizeOptimized // Set the frame cache size according to the total frames
+    FLAnimatedImagePreferredFrameCacheStrategyDefault,   // Set the frame cache size to 5
+    FLAnimatedImagePreferredFrameCacheStrategyOptimizedForTotalFrames // Set the frame cache size according to the total frames
 };
 
 @interface FLAnimatedImageFrameCache : NSObject
