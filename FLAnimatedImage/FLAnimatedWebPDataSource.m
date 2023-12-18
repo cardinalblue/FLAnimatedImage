@@ -21,7 +21,7 @@
     NSData *_data;
 
     CGRect _imageRect;
-    NSMutableDictionary<NSNumber *, UIImage *> *_processedImageDict;
+    NSMutableDictionary<NSNumber *, UIImage *> *_blendedImageDict;
 }
 
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo
@@ -30,7 +30,7 @@
     if (self) {
         _demuxer = demuxer;
         _frameInfo = [frameInfo copy];
-        _processedImageDict = [[NSMutableDictionary alloc] init];
+        _blendedImageDict = [[NSMutableDictionary alloc] init];
 
         int pixelHeight = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_HEIGHT);
         int pixelWidth = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_WIDTH);
@@ -42,8 +42,8 @@
 - (UIImage *)imageAtIndex:(NSUInteger)index
 {
     // Use blended images if it has already been created
-    if (_processedImageDict[@(index)]) {
-        return _processedImageDict[@(index)];
+    if (_blendedImageDict[@(index)]) {
+        return _blendedImageDict[@(index)];
     }
 
     WebPIterator iterator;
@@ -57,12 +57,6 @@
         image = [UIImage imageWithCGImage:imageRef];
         CGImageRelease(imageRef);
         image = [UIImage predrawnImageFromImage:image];
-
-        // images that don't require to be blended should add to cache as well
-        // for the images that require to be blended will add to cached after being blended in `blendImage:atIndex:withPreviousImage:`
-        if ([self frameRequiresBlendingWithPreviousFrame:index] == NO) {
-            _processedImageDict[@(index)] = image;
-        }
     }
 
     WebPDemuxReleaseIterator(&iterator);
@@ -103,8 +97,8 @@
 
 - (UIImage *)blendImage:(UIImage *)image atIndex:(NSUInteger)index withPreviousImage:(UIImage *)previousImage
 {
-    if (_processedImageDict[@(index)]) {
-        return _processedImageDict[@(index)];
+    if (_blendedImageDict[@(index)]) {
+        return _blendedImageDict[@(index)];
     }
 
     FLAnimatedWebPFrameInfo *previousFrameInfo = _frameInfo[index - 1];
@@ -133,11 +127,11 @@
     if (newCGImage) {
         UIImage *newImage = [UIImage imageWithCGImage:newCGImage];
         CGImageRelease(newCGImage);
-        _processedImageDict[@(index)] = newImage;
+        _blendedImageDict[@(index)] = newImage;
         return newImage;
     }
 
-    _processedImageDict[@(index)] = image;
+    _blendedImageDict[@(index)] = image;
     // Drawing the blended image failed, fallback to `image`
     return image;
 }
