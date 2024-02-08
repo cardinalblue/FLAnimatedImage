@@ -127,11 +127,11 @@
     if (newCGImage) {
         UIImage *newImage = [UIImage imageWithCGImage:newCGImage];
         CGImageRelease(newCGImage);
-        _blendedImageDict[@(index)] = newImage;
+//        _blendedImageDict[@(index)] = newImage;
         return newImage;
     }
 
-    _blendedImageDict[@(index)] = image;
+//    _blendedImageDict[@(index)] = image;
     // Drawing the blended image failed, fallback to `image`
     return image;
 }
