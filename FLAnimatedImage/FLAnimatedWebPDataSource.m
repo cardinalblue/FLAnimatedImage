@@ -11,8 +11,11 @@
 #import "FLAnimatedWebPFrameInfo.h"
 #import "FLWebPUtilities.h"
 #import "UIImage+Extension.h"
+#import "BlendedImageCache.h"
 
 #import <libwebp/decode.h>
+
+
 
 @implementation FLAnimatedWebPDataSource
 {
@@ -21,7 +24,8 @@
     NSData *_data;
 
     CGRect _imageRect;
-    NSMutableDictionary<NSNumber *, UIImage *> *_blendedImageDict;
+
+    BlendedImageCache *_blendedImageCache;
 }
 
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo
@@ -30,7 +34,7 @@
     if (self) {
         _demuxer = demuxer;
         _frameInfo = [frameInfo copy];
-        _blendedImageDict = [[NSMutableDictionary alloc] init];
+        _blendedImageCache = [[BlendedImageCache alloc] initWithLimit:3];
 
         int pixelHeight = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_HEIGHT);
         int pixelWidth = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_WIDTH);
@@ -42,8 +46,8 @@
 - (UIImage *)imageAtIndex:(NSUInteger)index
 {
     // Use blended images if it has already been created
-    if (_blendedImageDict[@(index)]) {
-        return _blendedImageDict[@(index)];
+    if ([_blendedImageCache imageAtIndex:index]) {
+        return [_blendedImageCache imageAtIndex:index];
     }
 
     WebPIterator iterator;
@@ -97,8 +101,8 @@
 
 - (UIImage *)blendImage:(UIImage *)image atIndex:(NSUInteger)index withPreviousImage:(UIImage *)previousImage
 {
-    if (_blendedImageDict[@(index)]) {
-        return _blendedImageDict[@(index)];
+    if ([_blendedImageCache imageAtIndex:index]) {
+        return [_blendedImageCache imageAtIndex:index];
     }
 
     FLAnimatedWebPFrameInfo *previousFrameInfo = _frameInfo[index - 1];
@@ -127,13 +131,14 @@
     if (newCGImage) {
         UIImage *newImage = [UIImage imageWithCGImage:newCGImage];
         CGImageRelease(newCGImage);
-//        _blendedImageDict[@(index)] = newImage;
+        [_blendedImageCache add:newImage withIndex:index];
         return newImage;
     }
 
-//    _blendedImageDict[@(index)] = image;
+    [_blendedImageCache add:image withIndex:index];
     // Drawing the blended image failed, fallback to `image`
     return image;
 }
 
 @end
+
