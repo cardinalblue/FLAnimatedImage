@@ -11,7 +11,7 @@
 #import "FLAnimatedWebPFrameInfo.h"
 #import "FLWebPUtilities.h"
 #import "UIImage+Extension.h"
-#import "BlendedImageCache.h"
+#import "IndexedImageCache.h"
 
 #import <libwebp/decode.h>
 
@@ -25,7 +25,7 @@
 
     CGRect _imageRect;
 
-    BlendedImageCache *_blendedImageCache;
+    IndexedImageCache *_blendedImageCache;
 }
 
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo
@@ -34,7 +34,7 @@
     if (self) {
         _demuxer = demuxer;
         _frameInfo = [frameInfo copy];
-        _blendedImageCache = [[BlendedImageCache alloc] initWithLimit:3];
+        _blendedImageCache = [[IndexedImageCache alloc] initWithLimit:3];
 
         int pixelHeight = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_HEIGHT);
         int pixelWidth = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_WIDTH);

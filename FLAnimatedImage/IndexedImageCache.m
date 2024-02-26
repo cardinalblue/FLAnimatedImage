@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface BlendedImageInfo : NSObject
+@interface IndexedImageInfo : NSObject
 
 @property(nonatomic) UIImage *image;
 @property(nonatomic) NSTimeInterval timestamp;
 
 @end
 
-@implementation BlendedImageInfo
+@implementation IndexedImageInfo
 
 @end
 
-@interface BlendedImageCache : NSObject
+@interface IndexedImageCache : NSObject
 
 - (instancetype)initWithLimit:(NSInteger)limit;
 
@@ -30,16 +30,16 @@
 
 @end
 
-@interface BlendedImageCache ()
+@interface IndexedImageCache ()
 
-@property(nonatomic) NSMutableDictionary<NSNumber *, BlendedImageInfo *> *blendedImageDict;
+@property(nonatomic) NSMutableDictionary<NSNumber *, IndexedImageInfo *> *blendedImageDict;
 
 // limit: 0 represents no cache
 @property(nonatomic) NSInteger limit;
 
 @end
 
-@implementation BlendedImageCache
+@implementation IndexedImageCache
 
 -(instancetype)initWithLimit:(NSInteger)limit {
     self = [super init];
@@ -65,7 +65,7 @@
 
 - (void)set:(UIImage *_Nullable)image atIndex:(NSInteger)index {
     if (image) {
-        BlendedImageInfo *info = [[BlendedImageInfo alloc] init];
+        IndexedImageInfo *info = [[IndexedImageInfo alloc] init];
         info.image = image;
         info.timestamp = [NSDate new].timeIntervalSince1970;
         self.blendedImageDict[@(index)] = info;
@@ -84,7 +84,7 @@
 }
 
 - (void)removeOldestCache {
-    NSArray *sortedArray = [[self.blendedImageDict allValues] sortedArrayUsingComparator:^NSComparisonResult(BlendedImageInfo * _Nonnull obj1, BlendedImageInfo * _Nonnull obj2) {
+    NSArray *sortedArray = [[self.blendedImageDict allValues] sortedArrayUsingComparator:^NSComparisonResult(IndexedImageInfo * _Nonnull obj1, IndexedImageInfo * _Nonnull obj2) {
         if (obj1.timestamp > obj2.timestamp) {
             return NSOrderedDescending;
         } else if (obj1.timestamp < obj2.timestamp) {
@@ -93,7 +93,7 @@
             return NSOrderedSame;
         }
     }];
-    BlendedImageInfo *oldest = sortedArray.firstObject;
+    IndexedImageInfo *oldest = sortedArray.firstObject;
     NSNumber *key = [self.blendedImageDict allKeysForObject:oldest].firstObject;
     if (key) {
         self.blendedImageDict[key] = nil;

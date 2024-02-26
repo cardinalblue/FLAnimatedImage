@@ -16,8 +16,8 @@
 		3017245C29E6BBEB004D15C0 /* FLAnimatedWebPFrameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3017245A29E6BBEB004D15C0 /* FLAnimatedWebPFrameInfo.m */; };
 		3017245E29E6BC03004D15C0 /* FLWebPUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 3017245D29E6BC02004D15C0 /* FLWebPUtilities.h */; };
 		3017246429E6D69C004D15C0 /* FLWebPUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3017246329E6D69C004D15C0 /* FLWebPUtilities.m */; };
-		301CD72F2B8842BD0061DED5 /* BlendedImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 301CD72E2B8842BD0061DED5 /* BlendedImageCache.m */; };
-		301CD7312B8844220061DED5 /* BlendedImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 301CD7302B8842D80061DED5 /* BlendedImageCache.h */; };
+		301CD7362B8CA0A20061DED5 /* IndexedImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 301CD7342B8CA0A20061DED5 /* IndexedImageCache.h */; };
+		301CD7372B8CA0A20061DED5 /* IndexedImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 301CD7352B8CA0A20061DED5 /* IndexedImageCache.m */; };
 		30502F2C29E68A1D00D0FE7D /* UIImage+Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = 30502F2A29E68A1D00D0FE7D /* UIImage+Extension.h */; };
 		30502F2D29E68A1D00D0FE7D /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30502F2B29E68A1D00D0FE7D /* UIImage+Extension.m */; };
 		30832B3129CC539300756BDE /* FLAnimatedImageFrameCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 30832B2B29CC539300756BDE /* FLAnimatedImageFrameCache.m */; };
@@ -60,8 +60,8 @@
 		3017245A29E6BBEB004D15C0 /* FLAnimatedWebPFrameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedWebPFrameInfo.m; sourceTree = "<group>"; };
 		3017245D29E6BC02004D15C0 /* FLWebPUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWebPUtilities.h; sourceTree = "<group>"; };
 		3017246329E6D69C004D15C0 /* FLWebPUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLWebPUtilities.m; sourceTree = "<group>"; };
-		301CD72E2B8842BD0061DED5 /* BlendedImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlendedImageCache.m; sourceTree = "<group>"; };
-		301CD7302B8842D80061DED5 /* BlendedImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlendedImageCache.h; sourceTree = "<group>"; };
+		301CD7342B8CA0A20061DED5 /* IndexedImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexedImageCache.h; path = FLAnimatedImage/IndexedImageCache.h; sourceTree = SOURCE_ROOT; };
+		301CD7352B8CA0A20061DED5 /* IndexedImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexedImageCache.m; path = FLAnimatedImage/IndexedImageCache.m; sourceTree = SOURCE_ROOT; };
 		30502F2A29E68A1D00D0FE7D /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		30502F2B29E68A1D00D0FE7D /* UIImage+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		30832B2B29CC539300756BDE /* FLAnimatedImageFrameCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageFrameCache.m; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				30502F2929E6652F00D0FE7D /* include */,
+				301CD7342B8CA0A20061DED5 /* IndexedImageCache.h */,
+				301CD7352B8CA0A20061DED5 /* IndexedImageCache.m */,
 				0C22DAE81BCABF4F006E1D3B /* FLAnimatedImage.m */,
 				30EBE18129EA956E00E62A94 /* FLAnimatedImage+Extension.m */,
 				30832B2E29CC539300756BDE /* FLAnimatedImage+GIF.m */,
@@ -133,8 +135,6 @@
 				30502F2A29E68A1D00D0FE7D /* UIImage+Extension.h */,
 				30502F2B29E68A1D00D0FE7D /* UIImage+Extension.m */,
 				30EBE18C29F0FBC900E62A94 /* FLAnimatedWebPImageFrame.m */,
-				301CD72E2B8842BD0061DED5 /* BlendedImageCache.m */,
-				301CD7302B8842D80061DED5 /* BlendedImageCache.h */,
 				0C22DAEB1BCABF4F006E1D3B /* Info.plist */,
 			);
 			path = FLAnimatedImage;
@@ -221,10 +221,10 @@
 				30EBE18229EA956E00E62A94 /* FLAnimatedImage+Extension.h in Headers */,
 				30832B4129CC53A100756BDE /* FLAnimatedImageData.h in Headers */,
 				30832B4529CC53A100756BDE /* FLAnimatedImage+GIF.h in Headers */,
+				301CD7362B8CA0A20061DED5 /* IndexedImageCache.h in Headers */,
 				30EF775C29E3C361004EE643 /* FLAnimatedImage+WebP.h in Headers */,
 				3017245E29E6BC03004D15C0 /* FLWebPUtilities.h in Headers */,
 				3017245729E6BBAB004D15C0 /* FLAnimatedWebPDataSource.h in Headers */,
-				301CD7312B8844220061DED5 /* BlendedImageCache.h in Headers */,
 				3017245B29E6BBEB004D15C0 /* FLAnimatedWebPFrameInfo.h in Headers */,
 				30EF776D29E40CA8004EE643 /* FLAnimatedWebPImageDecoder.h in Headers */,
 				30EF775429CC6259004EE643 /* FLAnimatedGIFDataSource.h in Headers */,
@@ -337,6 +337,7 @@
 				30EF776229E3C822004EE643 /* FLAnimatedSystemWebPDataSource.m in Sources */,
 				30EBE18E29F0FBC900E62A94 /* FLAnimatedWebPImageFrame.m in Sources */,
 				30EBE18329EA956E00E62A94 /* FLAnimatedImage+Extension.m in Sources */,
+				301CD7372B8CA0A20061DED5 /* IndexedImageCache.m in Sources */,
 				0C22DAED1BCABF4F006E1D3B /* FLAnimatedImage.m in Sources */,
 				30832B3429CC539300756BDE /* FLAnimatedImage+GIF.m in Sources */,
 				3017246429E6D69C004D15C0 /* FLWebPUtilities.m in Sources */,
@@ -346,7 +347,6 @@
 				30832B3529CC539300756BDE /* FLAnimatedImageData.m in Sources */,
 				30502F2D29E68A1D00D0FE7D /* UIImage+Extension.m in Sources */,
 				30832B3229CC539300756BDE /* FLAnimatedImageView.m in Sources */,
-				301CD72F2B8842BD0061DED5 /* BlendedImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

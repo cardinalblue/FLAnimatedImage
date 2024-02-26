@@ -1,5 +1,5 @@
 //
-//  BlendedImageCache.h
+//  IndexedImageCache.h
 //  FLAnimatedImage
 //
 //  Created by Sih Ou-Yang on 2024/2/23.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface BlendedImageCache : NSObject
+@interface IndexedImageCache : NSObject
 
 - (instancetype _Nonnull)initWithLimit:(NSInteger)limit; // limit represents the size of the cache
 
