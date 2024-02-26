@@ -47,6 +47,8 @@
 {
     // Use blended images if it has already been created
     if ([_blendedImageCache imageAtIndex:index]) {
+        // Update the timestamp for disposing the less used cache
+        [_blendedImageCache updateTimestampAtIndex:index];
         return [_blendedImageCache imageAtIndex:index];
     }
 

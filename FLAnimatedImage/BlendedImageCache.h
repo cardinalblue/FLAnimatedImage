@@ -15,6 +15,12 @@
 
 - (void)add:(UIImage *_Nonnull)image withIndex:(NSInteger)index;
 
+- (void)set:(UIImage *_Nullable)image atIndex:(NSInteger)index;
+
 - (nullable UIImage *)imageAtIndex:(NSInteger)index;
+
+- (void)updateTimestampAtIndex:(NSInteger)index;
+
+- (void)removeAll;
 
 @end

@@ -60,14 +60,27 @@
     }
 
     // add to cache
-    BlendedImageInfo *info = [[BlendedImageInfo alloc] init];
-    info.image = image;
-    info.timestamp = [NSDate new].timeIntervalSince1970;
-    self.blendedImageDict[@(index)] = info;
+    [self set:image atIndex:index];
+}
+
+- (void)set:(UIImage *_Nullable)image atIndex:(NSInteger)index {
+    if (image) {
+        BlendedImageInfo *info = [[BlendedImageInfo alloc] init];
+        info.image = image;
+        info.timestamp = [NSDate new].timeIntervalSince1970;
+        self.blendedImageDict[@(index)] = info;
+    } else {
+        self.blendedImageDict[@(index)] = nil;
+    }
 }
 
 - (UIImage *)imageAtIndex:(NSInteger)index {
     return self.blendedImageDict[@(index)].image;
+}
+
+// Update the timestamp for disposing the less used cache
+- (void)updateTimestampAtIndex:(NSInteger)index {
+    self.blendedImageDict[@(index)].timestamp = [NSDate new].timeIntervalSince1970;
 }
 
 - (void)removeOldestCache {
@@ -85,6 +98,10 @@
     if (key) {
         self.blendedImageDict[key] = nil;
     }
+}
+
+- (void)removeAll {
+    [self.blendedImageDict removeAllObjects];
 }
 
 @end
