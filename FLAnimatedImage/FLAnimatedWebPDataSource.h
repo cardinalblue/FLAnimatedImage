@@ -21,4 +21,6 @@
  */
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo;
 
+- (void)removeCaches;
+
 @end

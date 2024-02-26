@@ -142,5 +142,9 @@
     return image;
 }
 
+- (void)removeCaches {
+    [_blendedImageCache removeAll];
+}
+
 @end
 
