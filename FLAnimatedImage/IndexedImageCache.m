@@ -44,6 +44,11 @@
 }
 
 - (void)set:(UIImage *)image atIndex:(NSInteger)index {
+    if (!image) {
+        self.imageInfoDict[@(index)] = nil;
+        return;
+    }
+
     if (self.limit == 0) {
         return;
     }
@@ -53,14 +58,10 @@
     }
 
     // add to cache
-    if (image) {
-        IndexedImageInfo *info = [[IndexedImageInfo alloc] init];
-        info.image = image;
-        info.timestamp = [NSDate new].timeIntervalSince1970;
-        self.imageInfoDict[@(index)] = info;
-    } else {
-        self.imageInfoDict[@(index)] = nil;
-    }
+    IndexedImageInfo *info = [[IndexedImageInfo alloc] init];
+    info.image = image;
+    info.timestamp = [NSDate new].timeIntervalSince1970;
+    self.imageInfoDict[@(index)] = info;
 }
 
 - (UIImage *)imageAtIndex:(NSInteger)index {
