@@ -14,6 +14,7 @@
 #import "UIImage+Extension.h"
 #import "FLAnimatedImage.h"
 #import "FLAnimatedImageFrameDataSource.h"
+#import "FLAnimatedWebPDataSource.h"
 
 #define MEGABYTE (1024 * 1024)
 
@@ -486,7 +487,11 @@ static NSHashTable *allAnimatedImagesWeak;
 - (void)didReceiveMemoryWarning:(NSNotification *)notification
 {
     _memoryWarningCount++;
-    
+
+    if ([self.dataSource isKindOfClass:[FLAnimatedWebPDataSource class]]) {
+        [(FLAnimatedWebPDataSource *)self.dataSource removeCaches];
+    }
+
     // If we were about to grow larger, but got rapped on our knuckles by the system again, cancel.
     [NSObject cancelPreviousPerformRequestsWithTarget:self.weakProxy selector:@selector(growFrameCacheSizeAfterMemoryWarning:) object:@(FLAnimatedImageFrameCacheSizeGrowAfterMemoryWarning)];
     [NSObject cancelPreviousPerformRequestsWithTarget:self.weakProxy selector:@selector(resetFrameCacheSizeMaxInternal) object:nil];

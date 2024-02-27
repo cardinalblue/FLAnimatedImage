@@ -11,8 +11,11 @@
 #import "FLAnimatedWebPFrameInfo.h"
 #import "FLWebPUtilities.h"
 #import "UIImage+Extension.h"
+#import "IndexedImageCache.h"
 
 #import <libwebp/decode.h>
+
+
 
 @implementation FLAnimatedWebPDataSource
 {
@@ -21,7 +24,8 @@
     NSData *_data;
 
     CGRect _imageRect;
-    NSMutableDictionary<NSNumber *, UIImage *> *_blendedImageDict;
+    
+    IndexedImageCache *_blendedImageCache;
 }
 
 - (instancetype)initWithWebPDemuxer:(FLAnimatedWebPDemuxer *)demuxer frameInfo:(NSArray *)frameInfo
@@ -30,7 +34,7 @@
     if (self) {
         _demuxer = demuxer;
         _frameInfo = [frameInfo copy];
-        _blendedImageDict = [[NSMutableDictionary alloc] init];
+        _blendedImageCache = [[IndexedImageCache alloc] initWithLimit:3];
 
         int pixelHeight = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_HEIGHT);
         int pixelWidth = WebPDemuxGetI(_demuxer.demuxer, WEBP_FF_CANVAS_WIDTH);
@@ -41,9 +45,11 @@
 
 - (UIImage *)imageAtIndex:(NSUInteger)index
 {
-    // Use blended images if it has already been created
-    if (_blendedImageDict[@(index)]) {
-        return _blendedImageDict[@(index)];
+    UIImage *cachedImage = [_blendedImageCache imageAtIndex:index];
+    if (cachedImage) {
+        // Update the timestamp for disposing the less used cache
+        [_blendedImageCache updateTimestampAtIndex:index];
+        return cachedImage;
     }
 
     WebPIterator iterator;
@@ -97,8 +103,9 @@
 
 - (UIImage *)blendImage:(UIImage *)image atIndex:(NSUInteger)index withPreviousImage:(UIImage *)previousImage
 {
-    if (_blendedImageDict[@(index)]) {
-        return _blendedImageDict[@(index)];
+    UIImage *cachedImage = [_blendedImageCache imageAtIndex:index];
+    if (cachedImage) {
+        return cachedImage;
     }
 
     FLAnimatedWebPFrameInfo *previousFrameInfo = _frameInfo[index - 1];
@@ -127,13 +134,18 @@
     if (newCGImage) {
         UIImage *newImage = [UIImage imageWithCGImage:newCGImage];
         CGImageRelease(newCGImage);
-        _blendedImageDict[@(index)] = newImage;
+        [_blendedImageCache set:newImage atIndex:index];
         return newImage;
     }
 
-    _blendedImageDict[@(index)] = image;
+    [_blendedImageCache set:image atIndex:index];
     // Drawing the blended image failed, fallback to `image`
     return image;
 }
 
+- (void)removeCaches {
+    [_blendedImageCache removeAll];
+}
+
 @end
+
