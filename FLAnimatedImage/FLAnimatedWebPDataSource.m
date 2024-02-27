@@ -24,7 +24,7 @@
     NSData *_data;
 
     CGRect _imageRect;
-
+    
     IndexedImageCache *_blendedImageCache;
 }
 
@@ -45,11 +45,11 @@
 
 - (UIImage *)imageAtIndex:(NSUInteger)index
 {
-    // Use blended images if it has already been created
-    if ([_blendedImageCache imageAtIndex:index]) {
+    UIImage *cachedImage = [_blendedImageCache imageAtIndex:index];
+    if (cachedImage) {
         // Update the timestamp for disposing the less used cache
         [_blendedImageCache updateTimestampAtIndex:index];
-        return [_blendedImageCache imageAtIndex:index];
+        return cachedImage;
     }
 
     WebPIterator iterator;
@@ -103,8 +103,9 @@
 
 - (UIImage *)blendImage:(UIImage *)image atIndex:(NSUInteger)index withPreviousImage:(UIImage *)previousImage
 {
-    if ([_blendedImageCache imageAtIndex:index]) {
-        return [_blendedImageCache imageAtIndex:index];
+    UIImage *cachedImage = [_blendedImageCache imageAtIndex:index];
+    if (cachedImage) {
+        return cachedImage;
     }
 
     FLAnimatedWebPFrameInfo *previousFrameInfo = _frameInfo[index - 1];
@@ -133,11 +134,11 @@
     if (newCGImage) {
         UIImage *newImage = [UIImage imageWithCGImage:newCGImage];
         CGImageRelease(newCGImage);
-        [_blendedImageCache add:newImage withIndex:index];
+        [_blendedImageCache set:newImage atIndex:index];
         return newImage;
     }
 
-    [_blendedImageCache add:image withIndex:index];
+    [_blendedImageCache set:image atIndex:index];
     // Drawing the blended image failed, fallback to `image`
     return image;
 }

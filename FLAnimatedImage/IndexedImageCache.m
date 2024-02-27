@@ -6,6 +6,8 @@
 //  Copyright © 2024 com.cardinalblue. All rights reserved.
 //
 
+#import "IndexedImageCache.h"
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -20,19 +22,10 @@
 
 @end
 
-@interface IndexedImageCache : NSObject
-
-- (instancetype)initWithLimit:(NSInteger)limit;
-
-- (void)add:(UIImage *)image withIndex:(NSInteger)index;
-- (nullable UIImage *)imageAtIndex:(NSInteger)index;
-
-
-@end
 
 @interface IndexedImageCache ()
 
-@property(nonatomic) NSMutableDictionary<NSNumber *, IndexedImageInfo *> *blendedImageDict;
+@property(nonatomic) NSMutableDictionary<NSNumber *, IndexedImageInfo *> *imageInfoDict;
 
 // limit: 0 represents no cache
 @property(nonatomic) NSInteger limit;
@@ -44,64 +37,56 @@
 -(instancetype)initWithLimit:(NSInteger)limit {
     self = [super init];
     if (self) {
-        _blendedImageDict = [[NSMutableDictionary alloc] init];
+        _imageInfoDict = [[NSMutableDictionary alloc] init];
         _limit = limit;
     }
     return self;
 }
 
-- (void)add:(UIImage *)image withIndex:(NSInteger)index {
+- (void)set:(UIImage *)image atIndex:(NSInteger)index {
     if (self.limit == 0) {
         return;
     }
     // if cache reaches limit -> remove the oldest
-    if (self.blendedImageDict.count == self.limit) {
+    if (self.imageInfoDict.count == self.limit) {
         [self removeOldestCache];
     }
 
     // add to cache
-    [self set:image atIndex:index];
-}
-
-- (void)set:(UIImage *_Nullable)image atIndex:(NSInteger)index {
     if (image) {
         IndexedImageInfo *info = [[IndexedImageInfo alloc] init];
         info.image = image;
         info.timestamp = [NSDate new].timeIntervalSince1970;
-        self.blendedImageDict[@(index)] = info;
+        self.imageInfoDict[@(index)] = info;
     } else {
-        self.blendedImageDict[@(index)] = nil;
+        self.imageInfoDict[@(index)] = nil;
     }
 }
 
 - (UIImage *)imageAtIndex:(NSInteger)index {
-    return self.blendedImageDict[@(index)].image;
+    return self.imageInfoDict[@(index)].image;
 }
 
 // Update the timestamp for disposing the less used cache
 - (void)updateTimestampAtIndex:(NSInteger)index {
-    self.blendedImageDict[@(index)].timestamp = [NSDate new].timeIntervalSince1970;
+    self.imageInfoDict[@(index)].timestamp = [NSDate new].timeIntervalSince1970;
 }
 
 - (void)removeOldestCache {
-    NSArray *sortedArray = [[self.blendedImageDict allValues] sortedArrayUsingComparator:^NSComparisonResult(IndexedImageInfo * _Nonnull obj1, IndexedImageInfo * _Nonnull obj2) {
-        if (obj1.timestamp > obj2.timestamp) {
-            return NSOrderedDescending;
-        } else if (obj1.timestamp < obj2.timestamp) {
-            return NSOrderedAscending;
-        } else {
-            return NSOrderedSame;
+    NSNumber *minKey = nil;
+    NSInteger oldestTimestamp = NSIntegerMax;
+    for (NSNumber *key in self.imageInfoDict.allKeys) {
+        IndexedImageInfo *info = self.imageInfoDict[key];
+        if (info.timestamp < oldestTimestamp) {
+            oldestTimestamp = info.timestamp;
+            minKey = key;
         }
-    }];
-    IndexedImageInfo *oldest = sortedArray.firstObject;
-    NSNumber *key = [self.blendedImageDict allKeysForObject:oldest].firstObject;
-    if (key) {
-        self.blendedImageDict[key] = nil;
     }
+    self.imageInfoDict[minKey] = nil;
 }
 
 - (void)removeAll {
-    [self.blendedImageDict removeAllObjects];
+    [self.imageInfoDict removeAllObjects];
 }
 
 @end
