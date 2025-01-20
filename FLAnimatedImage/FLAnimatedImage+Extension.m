@@ -6,9 +6,7 @@
 //  Copyright © 2023 com.flipboard. All rights reserved.
 //
 
-#import "FLAnimatedImage+Extension.h"
-#import <FLAnimatedImage/FLAnimatedImage+GIF.h>
-#import <FLAnimatedImage/FLAnimatedImage+WebP.h>
+#import "FLAnimatedImage.h"
 
 #pragma mark - Private helper
 
