@@ -13,7 +13,7 @@
 #import "FLAnimatedWebPFrameInfo.h"
 #import "FLWebPUtilities.h"
 
-#import <libwebp/demux.h>
+#import <webp/demux.h>
 
 @implementation FLAnimatedImage (WebP)
 

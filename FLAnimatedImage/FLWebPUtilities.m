@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <libwebp/decode.h>
+#import <webp/decode.h>
 
 #ifndef BYTE_SIZE
 #define BYTE_SIZE 8 // byte size in bits

@@ -8,7 +8,7 @@
 
 #import "FLAnimatedWebPDemuxer.h"
 
-#import <libwebp/decode.h>
+#import <webp/decode.h>
 
 @implementation FLAnimatedWebPDemuxer
 {

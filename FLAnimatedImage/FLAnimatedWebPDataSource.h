@@ -10,7 +10,7 @@
 
 #import "FLAnimatedImageFrameDataSource.h"
 
-#import <libwebp/demux.h>
+#import <webp/demux.h>
 
 @class FLAnimatedWebPDemuxer;
 
