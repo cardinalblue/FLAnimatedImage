@@ -4,7 +4,6 @@
 //  Created by Grant Paul.
 //  Copyright (c) 2015 Facebook. All rights reserved.
 
-#import "FLAnimatedImage+WebP.h"
 #import "FLAnimatedImage+Internal.h"
 #import "FLAnimatedSystemWebPDataSource.h"
 #import "FLAnimatedWebPDataSource.h"
@@ -13,7 +12,7 @@
 #import "FLAnimatedWebPFrameInfo.h"
 #import "FLWebPUtilities.h"
 
-#import <libwebp/demux.h>
+#import <webp/demux.h>
 
 @implementation FLAnimatedImage (WebP)
 

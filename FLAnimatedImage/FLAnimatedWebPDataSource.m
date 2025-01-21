@@ -13,8 +13,7 @@
 #import "UIImage+Extension.h"
 #import "IndexedImageCache.h"
 
-#import <libwebp/decode.h>
-
+#import <webp/decode.h>
 
 
 @implementation FLAnimatedWebPDataSource

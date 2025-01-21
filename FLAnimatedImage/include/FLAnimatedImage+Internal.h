@@ -9,20 +9,6 @@
 #import "FLAnimatedImage.h"
 #import "FLAnimatedImageFrameCache.h"
 
-@interface FLAnimatedImage (Internal)
-
-- (instancetype)initWithData:(FLAnimatedImageData *)data
-                        size:(CGSize)size
-                   loopCount:(NSUInteger)loopCount
-                  frameCount:(NSUInteger)frameCount
-           skippedFrameCount:(NSUInteger)skippedFrameCount
-        delayTimesForIndexes:(NSDictionary *)delayTimesForIndexes
-    preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
-                 posterImage:(UIImage *)posterImage
-            posterImageIndex:(NSUInteger)posterImageIndex
-             frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource;
-@end
-
 // If a frame has a delay time less than kDelayTimeIntervalMinimum, we instead use kDelayTimeIntervalDefault as the
 // delay time, as it is assumed that that delay time is unintentional. This is consistent with how browsers behave.
 // See the comments on FLDelayTimeFloor for more details.

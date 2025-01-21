@@ -12,6 +12,7 @@
 // Allow user classes conveniently just importing one header.
 #import "FLAnimatedImageView.h"
 #import "FLAnimatedImageData.h"
+#import "FLAnimatedImageFrameCache.h"
 
 #ifndef NS_DESIGNATED_INITIALIZER
     #if __has_attribute(objc_designated_initializer)
@@ -84,6 +85,43 @@ typedef NS_ENUM(NSUInteger, FLLogLevel) {
 
 + (void)setLogBlock:(void (^)(NSString *logString, FLLogLevel logLevel))logBlock logLevel:(FLLogLevel)logLevel;
 + (void)logStringFromBlock:(NSString *(^)(void))stringBlock withLevel:(FLLogLevel)level;
+
+@end
+
+@interface FLAnimatedImage (Extension)
+
++ (FLAnimatedImage * _Nullable)animatedImageWithData:(NSData *)data;
+
+@end
+
+@interface FLAnimatedImage (GIF)
+
++ (FLAnimatedImage *)animatedImageWithGIFData:(NSData *)data;
+
+@end
+
+@interface FLAnimatedImage (Internal)
+
+- (instancetype)initWithData:(FLAnimatedImageData *)data
+                        size:(CGSize)size
+                   loopCount:(NSUInteger)loopCount
+                  frameCount:(NSUInteger)frameCount
+           skippedFrameCount:(NSUInteger)skippedFrameCount
+        delayTimesForIndexes:(NSDictionary *)delayTimesForIndexes
+    preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
+                 posterImage:(UIImage *)posterImage
+            posterImageIndex:(NSUInteger)posterImageIndex
+             frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource;
+@end
+
+typedef NS_ENUM(NSInteger, WebPDecodeType) {
+    WebPDecodeSystem, // use the iOS 14 built-in feature to decode webp
+    WebPDecodeLibWebP
+};
+
+@interface FLAnimatedImage (WebP)
+
++ (FLAnimatedImage *)animatedImageWithWebPData:(NSData *)data decodeType:(WebPDecodeType)type;
 
 @end
 

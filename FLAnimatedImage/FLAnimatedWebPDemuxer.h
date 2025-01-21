@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <libwebp/demux.h>
+#import <webp/demux.h>
 
 /**
  * FLAnimatedImage uses this class to create WebPDemuxer instances.
