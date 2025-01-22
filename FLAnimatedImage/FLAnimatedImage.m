@@ -514,7 +514,7 @@ static NSHashTable *allAnimatedImagesWeak;
 
 - (void)debug_animatedImage:(FLAnimatedImage *)animatedImage didUpdateCachedFrames:(NSIndexSet *)indexesOfFramesInCache
 {
-    [self.debug_delegate debug_animatedImage:self didUpdateCachedFrames:indexesOfFramesInCache];
+    [self.debug_delegate debug_animatedImage:animatedImage didUpdateCachedFrames:indexesOfFramesInCache];
 }
 
 - (void)debug_animatedImage:(FLAnimatedImage *)animatedImage didRequestCachedFrame:(NSUInteger)index

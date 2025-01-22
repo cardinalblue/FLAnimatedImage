@@ -29,9 +29,9 @@
 #if defined(DEBUG) && DEBUG
 @protocol FLAnimatedImageDebugDelegate <NSObject>
 @optional
-- (void)debug_animatedImage:(FLAnimatedImage *)animatedImage didUpdateCachedFrames:(NSIndexSet *)indexesOfFramesInCache;
-- (void)debug_animatedImage:(FLAnimatedImage *)animatedImage didRequestCachedFrame:(NSUInteger)index;
-- (CGFloat)debug_animatedImagePredrawingSlowdownFactor:(FLAnimatedImage *)animatedImage;
+- (void)debug_animatedImage:(FLAnimatedImage *_Nullable)animatedImage didUpdateCachedFrames:(NSIndexSet *_Nonnull)indexesOfFramesInCache;
+- (void)debug_animatedImage:(FLAnimatedImage *_Nullable)animatedImage didRequestCachedFrame:(NSUInteger)index;
+- (CGFloat)debug_animatedImagePredrawingSlowdownFactor:(FLAnimatedImage *_Nullable)animatedImage;
 @end
 #endif
 
@@ -45,29 +45,29 @@ extern const NSTimeInterval kFLAnimatedImageDelayTimeIntervalMinimum;
 //
 @interface FLAnimatedImage : NSObject
 
-@property (nonatomic, strong, readonly) UIImage *posterImage; // Guaranteed to be loaded; usually equivalent to `-imageLazilyCachedAtIndex:0`
+@property (nonatomic, strong, readonly) UIImage *_Nullable posterImage; // Guaranteed to be loaded; usually equivalent to `-imageLazilyCachedAtIndex:0`
 @property (nonatomic, assign, readonly) CGSize size; // The `.posterImage`'s `.size`
 
 @property (nonatomic, assign, readonly) NSUInteger loopCount; // "The number of times to repeat an animated sequence." according to ImageIO (note the slightly different definition to Netscape 2.0 Loop Extension); 0 means repeating the animation forever
-@property (nonatomic, strong, readonly) NSDictionary *delayTimesForIndexes; // Of type `NSTimeInterval` boxed in `NSNumber`s
+@property (nonatomic, strong, readonly) NSDictionary *_Nonnull delayTimesForIndexes; // Of type `NSTimeInterval` boxed in `NSNumber`s
 @property (nonatomic, assign, readonly) NSUInteger frameCount; // Number of valid frames; equal to `[.delayTimes count]`
 
 @property (nonatomic, assign, readonly) NSUInteger frameCacheSizeCurrent; // Current size of intelligently chosen buffer window; can range in the interval [1..frameCount]
 @property (nonatomic, assign) NSUInteger frameCacheSizeMax; // Allow to cap the cache size; 0 means no specific limit (default)
 
-@property (nonatomic, strong, readonly) FLAnimatedImageData *animatedImageData;
+@property (nonatomic, strong, readonly) FLAnimatedImageData *_Nonnull animatedImageData;
 
-@property (nonatomic, strong, readonly) id<FLAnimatedImageFrameDataSource> frameDataSource;
+@property (nonatomic, strong, readonly) id<FLAnimatedImageFrameDataSource> _Nullable frameDataSource;
 
 // Intended to be called from main thread synchronously; will return immediately.
 // If the result isn't cached, will return `nil`; the caller should then pause playback, not increment frame counter and keep polling.
 // After an initial loading time, depending on `frameCacheSize`, frames should be available immediately from the cache.
-- (UIImage *)imageLazilyCachedAtIndex:(NSUInteger)index;
+- (UIImage *_Nullable)imageLazilyCachedAtIndex:(NSUInteger)index;
 
 
 #if defined(DEBUG) && DEBUG
 @property (nonatomic, weak) id<FLAnimatedImageDebugDelegate> debug_delegate;
-@property (nonatomic, strong) NSMutableDictionary *debug_info; // To track arbitrary data (e.g. original URL, loading durations, cache hits, etc.)
+@property (nonatomic, strong) NSMutableDictionary * _Nullable debug_info; // To track arbitrary data (e.g. original URL, loading durations, cache hits, etc.)
 #endif
 
 @end
@@ -83,35 +83,35 @@ typedef NS_ENUM(NSUInteger, FLLogLevel) {
 
 @interface FLAnimatedImage (Logging)
 
-+ (void)setLogBlock:(void (^)(NSString *logString, FLLogLevel logLevel))logBlock logLevel:(FLLogLevel)logLevel;
-+ (void)logStringFromBlock:(NSString *(^)(void))stringBlock withLevel:(FLLogLevel)level;
++ (void)setLogBlock:(void (^_Nullable)(NSString * _Nullable logString, FLLogLevel logLevel))logBlock logLevel:(FLLogLevel)logLevel;
++ (void)logStringFromBlock:(NSString *_Nullable(^_Nullable)(void))stringBlock withLevel:(FLLogLevel)level;
 
 @end
 
 @interface FLAnimatedImage (Extension)
 
-+ (FLAnimatedImage * _Nullable)animatedImageWithData:(NSData *)data;
++ (FLAnimatedImage *_Nullable)animatedImageWithData:(NSData *_Nullable)data;
 
 @end
 
 @interface FLAnimatedImage (GIF)
 
-+ (FLAnimatedImage *)animatedImageWithGIFData:(NSData *)data;
++ (FLAnimatedImage *_Nullable)animatedImageWithGIFData:(NSData *_Nullable)data;
 
 @end
 
 @interface FLAnimatedImage (Internal)
 
-- (instancetype)initWithData:(FLAnimatedImageData *)data
-                        size:(CGSize)size
-                   loopCount:(NSUInteger)loopCount
-                  frameCount:(NSUInteger)frameCount
-           skippedFrameCount:(NSUInteger)skippedFrameCount
-        delayTimesForIndexes:(NSDictionary *)delayTimesForIndexes
-    preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
-                 posterImage:(UIImage *)posterImage
-            posterImageIndex:(NSUInteger)posterImageIndex
-             frameDataSource:(id<FLAnimatedImageFrameDataSource>)frameDataSource;
+- (instancetype _Nonnull)initWithData:(FLAnimatedImageData *_Nonnull)data
+                                 size:(CGSize)size
+                            loopCount:(NSUInteger)loopCount
+                           frameCount:(NSUInteger)frameCount
+                    skippedFrameCount:(NSUInteger)skippedFrameCount
+                 delayTimesForIndexes:(NSDictionary *_Nonnull)delayTimesForIndexes
+             preferFrameCacheStrategy:(FLAnimatedImagePreferredFrameCacheStrategy)strategy
+                          posterImage:(UIImage *_Nullable)posterImage
+                     posterImageIndex:(NSUInteger)posterImageIndex
+                      frameDataSource:(id<FLAnimatedImageFrameDataSource>_Nonnull)frameDataSource;
 @end
 
 typedef NS_ENUM(NSInteger, WebPDecodeType) {
@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger, WebPDecodeType) {
 
 @interface FLAnimatedImage (WebP)
 
-+ (FLAnimatedImage *)animatedImageWithWebPData:(NSData *)data decodeType:(WebPDecodeType)type;
++ (FLAnimatedImage *_Nullable)animatedImageWithWebPData:(NSData *_Nonnull)data decodeType:(WebPDecodeType)type;
 
 @end
 

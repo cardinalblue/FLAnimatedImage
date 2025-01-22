@@ -7,8 +7,8 @@
 //
 
 
-#import <FLAnimatedImage/FLAnimatedImage.h>
-#import <UIKit/UIKit.h>
+@import FLAnimatedImage;
+@import UIKit;
 
 typedef NS_ENUM(NSUInteger, DebugViewStyle) {
     DebugViewStyleDefault,
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, DebugViewStyle) {
 
 
 // Conforms to private FLAnimatedImageDebugDelegate and FLAnimatedImageViewDebugDelegate protocols, used in sample project.
-@interface DebugView : UIView
+@interface DebugView : UIView <FLAnimatedImageDebugDelegate>
 
 @property (nonatomic, weak) FLAnimatedImage *image;
 @property (nonatomic, weak) FLAnimatedImageView *imageView;

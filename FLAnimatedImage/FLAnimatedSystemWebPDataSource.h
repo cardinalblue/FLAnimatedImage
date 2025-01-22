@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import <FLAnimatedImageFrameDataSource.h>
+#import "FLAnimatedImageFrameDataSource.h"
 
 @interface FLAnimatedSystemWebPDataSource : NSObject <FLAnimatedImageFrameDataSource>
 
