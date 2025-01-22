@@ -91,8 +91,6 @@
 		30EF776C29E40CA8004EE643 /* FLAnimatedWebPImageDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedWebPImageDecoder.m; sourceTree = "<group>"; };
 		5BD626AE3C2AF49B66C2E60C /* Pods_FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C9BC0C1B199DC500D79B06 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B72BD12FC3BA8A386D320630 /* Pods-FLAnimatedImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FLAnimatedImage.debug.xcconfig"; path = "Target Support Files/Pods-FLAnimatedImage/Pods-FLAnimatedImage.debug.xcconfig"; sourceTree = "<group>"; };
-		EB1BB7CDAE1AB9DB8BBBA3A6 /* Pods-FLAnimatedImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FLAnimatedImage.release.xcconfig"; path = "Target Support Files/Pods-FLAnimatedImage/Pods-FLAnimatedImage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,15 +138,6 @@
 			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
-		23C82C7975A873023AD071CB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B72BD12FC3BA8A386D320630 /* Pods-FLAnimatedImage.debug.xcconfig */,
-				EB1BB7CDAE1AB9DB8BBBA3A6 /* Pods-FLAnimatedImage.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		3017244E29E6B894004D15C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +182,6 @@
 				92C9BC0D1B199DC500D79B06 /* Products */,
 				30EF775029CC53E7004EE643 /* Recovered References */,
 				3017244E29E6B894004D15C0 /* Frameworks */,
-				23C82C7975A873023AD071CB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -468,7 +456,6 @@
 		};
 		92C9BC231B199DC600D79B06 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B72BD12FC3BA8A386D320630 /* Pods-FLAnimatedImage.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				DEFINES_MODULE = YES;
@@ -487,7 +474,6 @@
 		};
 		92C9BC241B199DC600D79B06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB1BB7CDAE1AB9DB8BBBA3A6 /* Pods-FLAnimatedImage.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				DEFINES_MODULE = YES;
